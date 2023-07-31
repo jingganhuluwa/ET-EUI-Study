@@ -18,9 +18,35 @@ namespace ET
         /// 网络错误
         /// </summary>
         public const int Err_NetWorkError = 200002;
+
         /// <summary>
-        /// 登陆信息错误
+        /// 帐号密码存在空
         /// </summary>
-        public const int Err_LoginInfoError = 200003;
+        public const int Err_LoginInfoIsNull = 200003;
+
+        /// <summary>
+        /// 账号格式错误
+        /// </summary>
+        public const int Err_AccountNameFormError = 200004;
+
+        /// <summary>
+        /// 密码格式错误
+        /// </summary>
+        public const int Err_PasswordFormError = 200005;
+
+        /// <summary>
+        /// 帐号处于黑名单
+        /// </summary>
+        public const int Err_AccountInBlackList = 200006;
+
+        /// <summary>
+        /// 登陆密码错误
+        /// </summary>
+        public const int Err_LoginPasswordError = 200007;
+
+        /// <summary>
+        /// 请求重复
+        /// </summary>
+        public const int Err_RequestRepeatedly = 200008;
     }
 }
