@@ -493,7 +493,7 @@ namespace ET
 
 	}
 
-	[ResponseType(nameof(A2c_LoginAccount))]
+	[ResponseType(nameof(A2C_LoginAccount))]
 	[Message(OuterOpcode.C2A_LoginAccount)]
 	[ProtoContract]
 	public partial class C2A_LoginAccount: Object, IRequest
@@ -509,9 +509,9 @@ namespace ET
 
 	}
 
-	[Message(OuterOpcode.A2c_LoginAccount)]
+	[Message(OuterOpcode.A2C_LoginAccount)]
 	[ProtoContract]
-	public partial class A2c_LoginAccount: Object, IResponse
+	public partial class A2C_LoginAccount: Object, IResponse
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -527,6 +527,15 @@ namespace ET
 
 		[ProtoMember(2)]
 		public long AccountId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.A2C_Disconnect)]
+	[ProtoContract]
+	public partial class A2C_Disconnect: Object, IMessage
+	{
+		[ProtoMember(1)]
+		public int Error { get; set; }
 
 	}
 

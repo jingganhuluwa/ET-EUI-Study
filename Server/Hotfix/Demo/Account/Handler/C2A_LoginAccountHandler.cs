@@ -10,9 +10,9 @@ using System.Text.RegularExpressions;
 namespace ET
 {
     [FriendClassAttribute(typeof (Account))]
-    public class C2A_LoginAccountHandler: AMRpcHandler<C2A_LoginAccount, A2c_LoginAccount>
+    public class C2A_LoginAccountHandler: AMRpcHandler<C2A_LoginAccount, A2C_LoginAccount>
     {
-        protected override async ETTask Run(Session session, C2A_LoginAccount request, A2c_LoginAccount response, Action reply)
+        protected override async ETTask Run(Session session, C2A_LoginAccount request, A2C_LoginAccount response, Action reply)
         {
             if (session.DomainScene().SceneType != SceneType.Account)
             {
@@ -42,7 +42,7 @@ namespace ET
             }
 
             //校验客户端传来的帐号格式
-            if (Regex.IsMatch(request.AccountName.Trim(), @"^[a-zA-Z0-9]{6,15}$"))
+            if (!Regex.IsMatch(request.AccountName.Trim(), @"^[a-zA-Z0-9]{6,15}$"))
             {
                 response.Error = ErrorCode.Err_AccountNameFormError;
                 reply();
@@ -51,7 +51,7 @@ namespace ET
             }
 
             //校验客户端传来的密码格式
-            if (Regex.IsMatch(request.Password.Trim(), @"^[a-zA-Z0-9]{6,15}$"))
+            if (!Regex.IsMatch(request.Password.Trim(), @"^[a-zA-Z0-9]{6,15}$"))
             {
                 response.Error = ErrorCode.Err_PasswordFormError;
                 reply();
@@ -104,6 +104,19 @@ namespace ET
                                 .Save<Account>(account);
                     }
 
+                    //顶号登陆
+                    AccountSessionsComponent accountSessionsComponent = session.DomainScene().GetComponent<AccountSessionsComponent>();
+                    //获取之前记录的SessionInstanceId,session
+                    long accountSessionInstanceId = accountSessionsComponent.Get(account.Id);
+                    Session otherSession=Game.EventSystem.Get(accountSessionInstanceId) as Session;
+                    //发送消息,断开连接
+                    otherSession?.Send(new A2C_Disconnect(){Error = 0});
+                    otherSession?.Disconnect().Coroutine();
+                    //记录当前新的SessionInstanceId
+                    accountSessionsComponent.Add(account.Id,session.InstanceId);
+                    //超时断连
+                    session.AddComponent<AccountCheckOutTimeComponent,long>(account.Id);
+                    
                     //设置token,返回
                     string token = TimeHelper.ServerNow().ToString() + RandomHelper.RandomNumber(int.MinValue, int.MaxValue);
                     session.DomainScene().GetComponent<TokenComponent>().Remove(account.Id);
