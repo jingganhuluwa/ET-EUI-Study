@@ -17,8 +17,7 @@ namespace ET
         /// </summary>
         BlackList = 1
     }
-
-    [ComponentOf(typeof (Scene))]
+    
     public class Account: Entity, IAwake
     {
         /// <summary>

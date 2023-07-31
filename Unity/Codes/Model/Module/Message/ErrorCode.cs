@@ -18,5 +18,9 @@ namespace ET
         /// 网络错误
         /// </summary>
         public const int Err_NetWorkError = 200002;
+        /// <summary>
+        /// 登陆信息错误
+        /// </summary>
+        public const int Err_LoginInfoError = 200003;
     }
 }
