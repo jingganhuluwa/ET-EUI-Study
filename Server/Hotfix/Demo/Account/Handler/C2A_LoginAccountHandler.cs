@@ -51,7 +51,7 @@ namespace ET
             }
 
             //校验客户端传来的密码格式
-            if (!Regex.IsMatch(request.Password.Trim(), @"^[a-zA-Z0-9]{6,15}$"))
+            if (!Regex.IsMatch(request.Password.Trim(), @"^[a-zA-Z0-9]{5,40}$"))
             {
                 response.Error = ErrorCode.Err_PasswordFormError;
                 reply();
@@ -103,6 +103,20 @@ namespace ET
                         await DBManagerComponent.Instance.GetZoneDB(session.DomainZone())
                                 .Save<Account>(account);
                     }
+
+                    //获取登陆中心服信息
+                    StartSceneConfig startSceneConfig = StartSceneConfigCategory.Instance.GetBySceneName(session.DomainZone(),"LoginCenter");
+                    long loginCenterInstanceId = startSceneConfig.InstanceId;
+                    L2A_LoginAccountResponse l2ALoginAccountResponse = (L2A_LoginAccountResponse)await ActorMessageSenderComponent.Instance.Call(loginCenterInstanceId,new A2L_LoginAccountRequest(){AccountId = account.Id});
+                    if (l2ALoginAccountResponse.Error!=ErrorCode.ERR_Success)
+                    {
+                        response.Error = l2ALoginAccountResponse.Error;
+                        reply();
+                        session.Disconnect().Coroutine();
+                        account.Dispose();
+                        return;
+                    }
+                    
 
                     //顶号登陆
                     AccountSessionsComponent accountSessionsComponent = session.DomainScene().GetComponent<AccountSessionsComponent>();
