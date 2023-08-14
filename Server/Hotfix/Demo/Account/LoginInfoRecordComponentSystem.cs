@@ -45,7 +45,7 @@ namespace ET
             return -1;
         }
 
-        public static bool IsExit(this LoginInfoRecordComponent self,long key)
+        public static bool IsExist(this LoginInfoRecordComponent self,long key)
         {
             return self.AccountLoginInfoDict.ContainsKey(key);
         }

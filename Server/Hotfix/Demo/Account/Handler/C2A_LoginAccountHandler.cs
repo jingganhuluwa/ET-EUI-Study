@@ -51,7 +51,7 @@ namespace ET
             }
 
             //校验客户端传来的密码格式
-            if (!Regex.IsMatch(request.Password.Trim(), @"^[a-zA-Z0-9]{5,40}$"))
+            if (!Regex.IsMatch(request.Password.Trim(), @"^[a-zA-Z0-9]+$"))
             {
                 response.Error = ErrorCode.Err_PasswordFormError;
                 reply();
