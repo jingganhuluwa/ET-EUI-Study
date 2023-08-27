@@ -48,5 +48,10 @@ namespace ET
         /// 请求重复
         /// </summary>
         public const int Err_RequestRepeatedly = 200008;
+        
+        /// <summary>
+        /// 令牌Token错误
+        /// </summary>
+        public const int Err_TokenError = 200009;
     }
 }
