@@ -35,15 +35,29 @@ namespace ET
             self.Awake().Coroutine();
         }
     }
-    [FriendClass(typeof(ServerInfoManagerComponent))]
+
+    [FriendClass(typeof (ServerInfoManagerComponent))]
+    [FriendClass(typeof (ServerInfo))]
     public static class ServerInfoManagerComponentSystem
     {
         public static async ETTask Awake(this ServerInfoManagerComponent self)
         {
+            self.ServerInfoList.Clear();
+
             List<ServerInfo> serverInfoList = await DBManagerComponent.Instance.GetZoneDB(self.DomainZone()).Query<ServerInfo>(d => true);
             if (serverInfoList == null || serverInfoList.Count <= 0)
             {
                 Log.Error("ServerInfo Count is Zero");
+                Dictionary<int, ServerInfoConfig> serverInfoConfigs = ServerInfoConfigCategory.Instance.GetAll();
+                foreach (ServerInfoConfig info in serverInfoConfigs.Values)
+                {
+                    ServerInfo newServerInfo = self.AddChildWithId<ServerInfo>(info.Id);
+                    newServerInfo.ServerName = info.ServerName;
+                    newServerInfo.Status = (int) ServerStatus.Normal;
+                    self.ServerInfoList.Add(newServerInfo);
+                    await DBManagerComponent.Instance.GetZoneDB(self.DomainZone()).Save(newServerInfo);
+                }
+
                 return;
             }
 
@@ -52,7 +66,6 @@ namespace ET
                 self.AddChild(serverInfo);
                 self.ServerInfoList.Add(serverInfo);
             }
-            
         }
     }
 }

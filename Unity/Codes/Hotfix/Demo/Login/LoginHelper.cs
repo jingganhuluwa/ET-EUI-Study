@@ -56,16 +56,43 @@ namespace ET
                 Log.Error(e.ToString());
             }
 
-            if (a2CGetServerInfos.Error!=ErrorCode.ERR_Success)
+            if (a2CGetServerInfos.Error != ErrorCode.ERR_Success)
             {
                 return a2CGetServerInfos.Error;
             }
-            
+
             foreach (ServerInfoProto serverInfoProto in a2CGetServerInfos.ServerInfoList)
             {
-                ServerInfo serverInfo=zoneScene.GetComponent<ServerInfosComponent>().AddChild<ServerInfo>();
+                ServerInfo serverInfo = zoneScene.GetComponent<ServerInfosComponent>().AddChild<ServerInfo>();
                 serverInfo.FromMessage(serverInfoProto);
                 zoneScene.GetComponent<ServerInfosComponent>().Add(serverInfo);
+            }
+
+            return ErrorCode.ERR_Success;
+        }
+
+        public static async ETTask<int> CreateRole(Scene zoneScene, string name,int serverId=1)
+        {
+            A2C_CreateRole a2CCreateRole = null;
+            try
+            {
+                a2CCreateRole = (A2C_CreateRole) await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2A_CreateRole()
+                        {
+                            AccountId = zoneScene.GetComponent<AccountInfoComponent>().AccountId,
+                            Token = zoneScene.GetComponent<AccountInfoComponent>().Token,
+                            Name = name,
+                            ServerId = serverId
+                        });
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                return ErrorCode.Err_NetWorkError;
+            }
+
+            if (a2CCreateRole.Error!=ErrorCode.ERR_Success)
+            {
+                return a2CCreateRole.Error;
             }
 
             return ErrorCode.ERR_Success;
