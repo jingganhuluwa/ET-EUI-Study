@@ -624,6 +624,7 @@ public partial class UICodeSpawner
         WidgetInterfaceList.Add("Button");
         WidgetInterfaceList.Add( "Text");
         WidgetInterfaceList.Add("TMPro.TextMeshProUGUI");
+        WidgetInterfaceList.Add("TMPro.TMP_InputField");
         WidgetInterfaceList.Add("Input");
         WidgetInterfaceList.Add("InputField");
         WidgetInterfaceList.Add( "Scrollbar");

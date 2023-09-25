@@ -8,7 +8,8 @@ using System.Collections.Generic;
 
 namespace ET
 {
-    public class C2A_CreateRoleHandler: AMRpcHandler<C2A_CreateRole, A2C_CreateRole>
+    [FriendClass(typeof(RoleInfo))]
+    public class C2A_CreateRoleHandler : AMRpcHandler<C2A_CreateRole, A2C_CreateRole>
     {
         protected override async ETTask Run(Session session, C2A_CreateRole request, A2C_CreateRole response, Action reply)
         {
@@ -18,7 +19,7 @@ namespace ET
                 session.Dispose();
                 return;
             }
-            
+
             if (session.GetComponent<SessionLockingComponent>() != null)
             {
                 response.Error = ErrorCode.Err_RequestRepeatedly;
@@ -32,7 +33,7 @@ namespace ET
             {
                 response.Error = ErrorCode.Err_TokenError;
                 reply();
-                session?.Disconnect().Coroutine();
+                session.Disconnect().Coroutine();
                 return;
             }
 
@@ -61,7 +62,7 @@ namespace ET
                     RoleInfo newRoleInfo = session.AddChildWithId<RoleInfo>(IdGenerater.Instance.GenerateUnitId(request.ServerId));
                     newRoleInfo.Name = request.Name;
                     newRoleInfo.AccountId = request.AccountId;
-                    newRoleInfo.State = (int) RoleInfoState.Normal;
+                    newRoleInfo.State = (int)RoleInfoState.Normal;
                     newRoleInfo.ServerId = request.ServerId;
                     newRoleInfo.CreateTime = TimeHelper.ServerNow();
                     newRoleInfo.LastLoginTime = 0;
@@ -71,7 +72,7 @@ namespace ET
                     response.RoleInfo = newRoleInfo.ToMessage();
                     reply();
 
-                    newRoleInfo?.Dispose();
+                    newRoleInfo.Dispose();
                 }
             }
 
