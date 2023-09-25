@@ -63,5 +63,10 @@ namespace ET
         /// 角色名已存在
         /// </summary>
         public const int Err_RoleNameIsExist = 200011;
+        
+        /// <summary>
+        /// 角色不存在
+        /// </summary>
+        public const int Err_RoleNoExist = 200012;
     }
 }
