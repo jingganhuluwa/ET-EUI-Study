@@ -14,5 +14,10 @@ namespace ET
 
 			return zoneGates[n];
 		}
+
+		public static StartSceneConfig GetRealm(int zone)
+		{
+			return StartSceneConfigCategory.Instance.realms[zone];
+		}
 	}
 }

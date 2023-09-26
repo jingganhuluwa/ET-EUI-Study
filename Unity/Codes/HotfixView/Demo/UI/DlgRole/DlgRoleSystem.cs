@@ -69,9 +69,20 @@ namespace ET
                 Log.Error("请先选择角色");
                 return;
             }
-            //todo 进入主城
-            self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Lobby);
-            self.ZoneScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_Role);
+
+            try
+            {
+                int errorCode=await LoginHelper.GetRelamKey(self.ZoneScene());
+                
+                //todo 进入主城
+                self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Lobby);
+                self.ZoneScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_Role);
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+            }
+            
         }
 
         public static async ETTask OnCreateClickHandler(this DlgRole self)

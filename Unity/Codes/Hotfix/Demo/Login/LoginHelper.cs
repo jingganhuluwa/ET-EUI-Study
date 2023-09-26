@@ -142,6 +142,37 @@ namespace ET
         }
 
 
+        public static async ETTask<int> GetRelamKey(Scene zoneScene)
+        {
+            A2C_GetRealmKey result = null;
+            try
+            {
+                result = (A2C_GetRealmKey)await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2A_GetRealmKey()
+                {
+                    AccountId = zoneScene.GetComponent<AccountInfoComponent>().AccountId,
+                    Token = zoneScene.GetComponent<AccountInfoComponent>().Token,
+                    ServerId = zoneScene.GetComponent<ServerInfosComponent>().CurrentServerId
+                });
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                return ErrorCode.Err_NetWorkError;
+            }
+
+            if (result.Error != ErrorCode.ERR_Success)
+            {
+                Log.Error(result.Error.ToString());
+                return result.Error;
+            }
+
+            zoneScene.GetComponent<AccountInfoComponent>().RealmKey = result.RealmKey;
+            zoneScene.GetComponent<AccountInfoComponent>().RealmAdress = result.RealmAddress;
+            
+            
+            return ErrorCode.ERR_Success;
+        }
+
         public static async ETTask<int> DeleteRole(Scene zoneScene)
         {
             A2C_DeleteRole result = null;

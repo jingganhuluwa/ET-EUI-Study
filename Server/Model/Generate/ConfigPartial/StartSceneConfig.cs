@@ -8,6 +8,8 @@ namespace ET
     {
         public MultiMap<int, StartSceneConfig> Gates = new MultiMap<int, StartSceneConfig>();
         
+        public Dictionary<int, StartSceneConfig> realms = new Dictionary<int,StartSceneConfig>();
+        
         public MultiMap<int, StartSceneConfig> ProcessScenes = new MultiMap<int, StartSceneConfig>();
         
         public Dictionary<long, Dictionary<string, StartSceneConfig>> ZoneScenesByName = new Dictionary<long, Dictionary<string, StartSceneConfig>>();
@@ -48,6 +50,9 @@ namespace ET
                         break;
                     case SceneType.Robot:
                         this.Robots.Add(startSceneConfig);
+                        break;
+                    case SceneType.Realm:
+                        this.realms.Add(startSceneConfig.Zone,startSceneConfig);
                         break;
                 }
             }
