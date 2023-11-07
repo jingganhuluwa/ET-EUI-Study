@@ -73,10 +73,22 @@ namespace ET
             try
             {
                 int errorCode=await LoginHelper.GetRelamKey(self.ZoneScene());
+                if (errorCode!=ErrorCode.ERR_Success)
+                {
+                    Log.Error(errorCode.ToString());
+                    return;
+                }
                 
-                //todo 进入主城
-                self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Lobby);
-                self.ZoneScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_Role);
+                
+                errorCode=await LoginHelper.EnterGame(self.ZoneScene());
+                if (errorCode!=ErrorCode.ERR_Success)
+                {
+                    Log.Error(errorCode.ToString());
+                    return;
+                }
+                
+                // self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Lobby);
+                // self.ZoneScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_Role);
             }
             catch (Exception e)
             {

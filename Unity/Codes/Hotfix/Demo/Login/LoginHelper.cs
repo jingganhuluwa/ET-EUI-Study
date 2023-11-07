@@ -167,8 +167,9 @@ namespace ET
             }
 
             zoneScene.GetComponent<AccountInfoComponent>().RealmKey = result.RealmKey;
-            zoneScene.GetComponent<AccountInfoComponent>().RealmAdress = result.RealmAddress;
+            zoneScene.GetComponent<AccountInfoComponent>().RealmAddress = result.RealmAddress;
             
+            zoneScene.GetComponent<SessionComponent>().Session.Dispose();
             
             return ErrorCode.ERR_Success;
         }
@@ -202,6 +203,52 @@ namespace ET
             zoneScene.GetComponent<RoleInfosComponent>().RoleInfoList.Remove(roleInfo);
             roleInfo.Dispose();
 
+            return ErrorCode.ERR_Success;
+        }
+
+        
+        public static async ETTask<int> EnterGame(Scene zoneScene)
+        {
+            string realmAddress = zoneScene.GetComponent<AccountInfoComponent>().RealmAddress;
+            //1.连接Realm,获取分配Gate
+            R2C_LoginRealm result = null;
+            
+            Session session = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(realmAddress));
+            try
+            {
+                result = (R2C_LoginRealm)await session.Call(new C2R_LoginRealm()
+                {
+                    AccountId = zoneScene.GetComponent<AccountInfoComponent>().AccountId,
+                    RealmTokenKey = zoneScene.GetComponent<AccountInfoComponent>().RealmKey
+                });
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                session?.Dispose();
+                return ErrorCode.Err_NetWorkError;
+            }
+            session?.Dispose();
+
+            if (result.Error != ErrorCode.ERR_Success)
+            {
+                Log.Error(result.Error.ToString());
+                return result.Error;
+            }
+
+            Log.Warning($"GateAddress: {result.GateAddress}");
+
+            Session gateSession = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(result.GateAddress));
+            gateSession.AddComponent<PingComponent>();
+            zoneScene.GetComponent<SessionComponent>().Session = gateSession;
+            
+            //2.开始连接Gate
+            
+
+
+
+            
+            
             return ErrorCode.ERR_Success;
         }
     }

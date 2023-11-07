@@ -712,9 +712,6 @@
      <Reference Include="com.unity.cinemachine.editor">
      <HintPath>F:\Unity\Project\ET-EUI-Study\Unity\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.Postprocessing.Runtime">
-     <HintPath>F:\Unity\Project\ET-EUI-Study\Unity\Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.Burst.Editor">
      <HintPath>F:\Unity\Project\ET-EUI-Study\Unity\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
      </Reference>
@@ -828,9 +825,6 @@
      </Reference>
      <Reference Include="Unity.AI.Navigation.Updater">
      <HintPath>F:\Unity\Project\ET-EUI-Study\Unity\Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Postprocessing.Editor">
-     <HintPath>F:\Unity\Project\ET-EUI-Study\Unity\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Mathematics">
      <HintPath>F:\Unity\Project\ET-EUI-Study\Unity\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>

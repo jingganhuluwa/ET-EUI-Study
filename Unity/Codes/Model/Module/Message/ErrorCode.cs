@@ -68,5 +68,10 @@ namespace ET
         /// 角色不存在
         /// </summary>
         public const int Err_RoleNoExist = 200012;
+        
+        /// <summary>
+        /// 请求Scene错误
+        /// </summary>
+        public const int Err_RequestSceneTypeError = 200013;
     }
 }
