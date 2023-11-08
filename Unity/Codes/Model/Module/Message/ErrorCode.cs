@@ -78,5 +78,10 @@ namespace ET
         /// Gate Key验证失败
         /// </summary>
         public const int Err_ConnectGateKeyError = 200014;
+        
+        /// <summary>
+        /// 帐号在其他地方登陆
+        /// </summary>
+        public const int Err_OtherAccountLogin = 200015;
     }
 }
