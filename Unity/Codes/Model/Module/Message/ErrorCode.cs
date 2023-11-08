@@ -72,6 +72,11 @@ namespace ET
         /// <summary>
         /// 请求Scene错误
         /// </summary>
-        public const int Err_RequestSceneTypeError = 200013;
+        public const int Err_RequestSceneTypeError = 200013; 
+        
+        /// <summary>
+        /// Gate Key验证失败
+        /// </summary>
+        public const int Err_ConnectGateKeyError = 200014;
     }
 }

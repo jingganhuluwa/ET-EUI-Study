@@ -141,13 +141,12 @@ namespace ET
             return ErrorCode.ERR_Success;
         }
 
-
         public static async ETTask<int> GetRelamKey(Scene zoneScene)
         {
             A2C_GetRealmKey result = null;
             try
             {
-                result = (A2C_GetRealmKey)await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2A_GetRealmKey()
+                result = (A2C_GetRealmKey) await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2A_GetRealmKey()
                 {
                     AccountId = zoneScene.GetComponent<AccountInfoComponent>().AccountId,
                     Token = zoneScene.GetComponent<AccountInfoComponent>().Token,
@@ -168,9 +167,9 @@ namespace ET
 
             zoneScene.GetComponent<AccountInfoComponent>().RealmKey = result.RealmKey;
             zoneScene.GetComponent<AccountInfoComponent>().RealmAddress = result.RealmAddress;
-            
+
             zoneScene.GetComponent<SessionComponent>().Session.Dispose();
-            
+
             return ErrorCode.ERR_Success;
         }
 
@@ -179,7 +178,7 @@ namespace ET
             A2C_DeleteRole result = null;
             try
             {
-                result = (A2C_DeleteRole)await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2A_DeleteRole()
+                result = (A2C_DeleteRole) await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2A_DeleteRole()
                 {
                     AccountId = zoneScene.GetComponent<AccountInfoComponent>().AccountId,
                     Token = zoneScene.GetComponent<AccountInfoComponent>().Token,
@@ -206,17 +205,16 @@ namespace ET
             return ErrorCode.ERR_Success;
         }
 
-        
         public static async ETTask<int> EnterGame(Scene zoneScene)
         {
             string realmAddress = zoneScene.GetComponent<AccountInfoComponent>().RealmAddress;
             //1.连接Realm,获取分配Gate
             R2C_LoginRealm result = null;
-            
+
             Session session = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(realmAddress));
             try
             {
-                result = (R2C_LoginRealm)await session.Call(new C2R_LoginRealm()
+                result = (R2C_LoginRealm) await session.Call(new C2R_LoginRealm()
                 {
                     AccountId = zoneScene.GetComponent<AccountInfoComponent>().AccountId,
                     RealmTokenKey = zoneScene.GetComponent<AccountInfoComponent>().RealmKey
@@ -228,6 +226,7 @@ namespace ET
                 session?.Dispose();
                 return ErrorCode.Err_NetWorkError;
             }
+
             session?.Dispose();
 
             if (result.Error != ErrorCode.ERR_Success)
@@ -241,14 +240,33 @@ namespace ET
             Session gateSession = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(result.GateAddress));
             gateSession.AddComponent<PingComponent>();
             zoneScene.GetComponent<SessionComponent>().Session = gateSession;
-            
+
             //2.开始连接Gate
-            
+            long currentRoleId = zoneScene.GetComponent<RoleInfosComponent>().CurrentRoleId;
+            G2C_LoginGameGate g2CLoginGameGateGate = null;
+            try
+            {
+                long accountId = zoneScene.GetComponent<AccountInfoComponent>().AccountId;
+                g2CLoginGameGateGate = (G2C_LoginGameGate) await gateSession.Call(new C2G_LoginGameGate()
+                {
+                    Key = result.GateSessionKey, AccountId = accountId, RoleId = currentRoleId
+                });
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
+                zoneScene.GetComponent<SessionComponent>().Session.Dispose();
+                return ErrorCode.Err_NetWorkError;
+            }
 
+            if (g2CLoginGameGateGate.Error != ErrorCode.ERR_Success)
+            {
+                Log.Error(g2CLoginGameGateGate.Error.ToString());
+                zoneScene.GetComponent<SessionComponent>().Session.Dispose();
+                return g2CLoginGameGateGate.Error;
+            }
 
-
-            
-            
+            Log.Debug("登陆Gate成功");
             return ErrorCode.ERR_Success;
         }
     }
