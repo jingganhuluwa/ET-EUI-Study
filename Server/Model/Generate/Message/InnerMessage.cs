@@ -412,7 +412,7 @@ namespace ET
 
 	}
 
-	[ResponseType(nameof(G2R_GetLoginKey))]
+	[ResponseType(nameof(G2R_GetLoginGateKey))]
 	[Message(InnerOpcode.R2G_GetLoginGateKey)]
 	[ProtoContract]
 	public partial class R2G_GetLoginGateKey: Object, IActorRequest
@@ -462,6 +462,31 @@ namespace ET
 	[Message(InnerOpcode.L2G_AddLoginRecord)]
 	[ProtoContract]
 	public partial class L2G_AddLoginRecord: Object, IActorResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(nameof(M2G_RequestEnterGameState))]
+	[Message(InnerOpcode.G2M_RequestEnterGameState)]
+	[ProtoContract]
+	public partial class G2M_RequestEnterGameState: Object, IActorLocationRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+	}
+
+	[Message(InnerOpcode.M2G_RequestEnterGameState)]
+	[ProtoContract]
+	public partial class M2G_RequestEnterGameState: Object, IActorLocationResponse
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }

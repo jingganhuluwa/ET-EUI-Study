@@ -83,5 +83,40 @@ namespace ET
         /// 帐号在其他地方登陆
         /// </summary>
         public const int Err_OtherAccountLogin = 200015;
+        
+        /// <summary>
+        /// SessionPlayer错误
+        /// </summary>
+        public const int Err_SessionPlayerError = 200016;
+        
+        /// <summary>
+        /// 无Player错误
+        /// </summary>
+        public const int Err_NonePlayerError = 200017;
+        
+        /// <summary>
+        /// PlayerSession错误
+        /// </summary>
+        public const int Err_PlayerSessionError = 200018;
+        
+        /// <summary>
+        /// Session状态错误
+        /// </summary>
+        public const int ERR_SessionStateError = 200019;
+        
+        /// <summary>
+        /// 重进错误
+        /// </summary>
+        public const int ERR_ReEnterGameError = 200020;
+        
+        /// <summary>
+        /// 二次登陆错误
+        /// </summary>
+        public const int ERR_ReEnterGameError2 = 200021;
+        
+        /// <summary>
+        /// 角色进入逻辑服错误
+        /// </summary>
+        public const int ERR_EnterGameError = 200022;
     }
 }

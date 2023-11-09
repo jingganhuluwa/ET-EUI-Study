@@ -8,6 +8,7 @@ using System;
 namespace ET
 {
     [FriendClassAttribute(typeof(ET.SessionPlayerComponent))]
+    [FriendClassAttribute(typeof(ET.SessionStateComponent))]
     public class C2G_LoginGameGateHandler : AMRpcHandler<C2G_LoginGameGate, G2C_LoginGameGate>
     {
         protected override async ETTask Run(Session session, C2G_LoginGameGate request, G2C_LoginGameGate response, Action reply)
@@ -53,12 +54,10 @@ namespace ET
                         return;
                     }
 
+                    //通知登录中心服 记录本次登录的服务器Zone
                     StartSceneConfig loginCenterConfig = StartSceneConfigCategory.Instance.LoginCenterConfig;
-                    L2G_AddLoginRecord result = (L2G_AddLoginRecord)await MessageHelper.CallActor(loginCenterConfig.InstanceId, new G2L_AddLoginRecord()
-                    {
-                        AccountId = request.AccountId,
-                        ServerId = session.DomainScene().Zone
-                    });
+                    L2G_AddLoginRecord result    = (L2G_AddLoginRecord) await MessageHelper.CallActor(loginCenterConfig.InstanceId, 
+                        new G2L_AddLoginRecord() { AccountId = request.AccountId, ServerId = scene.Zone});
 
 
 
@@ -69,6 +68,14 @@ namespace ET
                         session.Disconnect().Coroutine();
                         return;
                     }
+
+                    SessionStateComponent SessionStateComponent = session.GetComponent<SessionStateComponent>();
+                    if (SessionStateComponent == null)
+                    {
+                        SessionStateComponent = session.AddComponent<SessionStateComponent>();
+                    }
+                    SessionStateComponent.State = SessionState.Normal;
+
 
                     Player player = scene.GetComponent<PlayerComponent>().Get(request.AccountId);
 

@@ -202,7 +202,7 @@ message R2A_GetRealmKey // IActorResponse
     string RealmKey = 1;
 }
 
-//ResponseType G2R_GetLoginKey
+//ResponseType G2R_GetLoginGateKey
 message R2G_GetLoginGateKey // IActorRequest
 {
     int32 RpcId = 90;
@@ -227,6 +227,20 @@ message G2L_AddLoginRecord // IActorRequest
 }
 
 message L2G_AddLoginRecord // IActorResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+
+}
+
+//ResponseType M2G_RequestEnterGameState
+message G2M_RequestEnterGameState // IActorLocationRequest
+{
+    int32 RpcId = 90;
+}
+
+message M2G_RequestEnterGameState // IActorLocationResponse
 {
     int32 RpcId = 90;
     int32 Error = 91;
