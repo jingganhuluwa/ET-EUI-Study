@@ -266,12 +266,55 @@ message M2G_RequestExitGame // IActorLocationResponse
 //ResponseType L2G_RemoveLoginRecord
 message G2L_RemoveLoginRecord // IActorRequest
 {
-    int32 RpcId       = 90;
-    int64 AccountId  = 1;
+    int32 RpcId = 90;
+    int64 AccountId = 1;
     int32 ServerId = 2;
 }
 
 message L2G_RemoveLoginRecord // IActorResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+//-------玩家缓存相关--------
+
+//增加或更新Unit缓存
+//ResponseType UnitCache2Other_AddOrUpdateUnit
+message Other2UnitCache_AddOrUpdateUnit // IActorRequest
+{
+    int32 RpcId = 90;
+    int64 UnitId = 1;                 //缓存的UnitId
+    repeated string EntityType = 2;   //实体类型
+    repeated bytes EntityBytes = 3;   //实体实例化后的bytes
+}
+
+message UnitCache2Other_AddOrUpdateUnit // IActorResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+//获取Unit缓存(回复消息定在MongoMessage)
+//ResponseType UnitCache2Other_GetUnit
+message Other2UnitCache_GetUnit // IActorRequest
+{
+    int32 RpcId = 90;
+    int64 UnitId = 1;                        //缓存的UnitId
+    repeated string ComponentNameList = 2;   //需要获取的组件名
+}
+
+//增加或更新Unit缓存
+//ResponseType UnitCache2Other_DeleteUnit
+message Other2UnitCache_DeleteUnit // IActorRequest
+{
+    int32 RpcId = 90;
+    int64 UnitId = 1;
+}
+
+message UnitCache2Other_DeleteUnit // IActorResponse
 {
     int32 RpcId = 90;
     int32 Error = 91;
