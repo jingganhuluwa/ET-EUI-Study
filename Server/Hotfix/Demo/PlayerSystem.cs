@@ -8,7 +8,7 @@
         {
             public override void Awake(Player self, long account,long roleId)
             {
-                self.Account = account;
+                self.AccountId = account;
                 self.UnitId = roleId;
             }
         }
@@ -19,7 +19,7 @@
         {
             public override void Destroy(Player self)
             {
-                self.Account = 0;
+                self.AccountId = 0;
                 self.UnitId    = 0;
                 self.PlayerState = PlayerState.Disconnect;
             }

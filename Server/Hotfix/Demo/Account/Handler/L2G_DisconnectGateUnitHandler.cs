@@ -28,6 +28,10 @@ namespace ET
                 Session gateSession=Game.EventSystem.Get(player.SessionInstanceId) as Session;
                 if (gateSession!=null && !gateSession.IsDisposed)
                 {
+                    if (gateSession.GetComponent<SessionPlayerComponent>() != null)
+                    {
+                        gateSession.GetComponent<SessionPlayerComponent>().IsLoginAgain = true;
+                    }
                     gateSession.Send(new A2C_Disconnect(){Error = ErrorCode.Err_OtherAccountLogin});
                     gateSession?.Disconnect().Coroutine();
                 }
