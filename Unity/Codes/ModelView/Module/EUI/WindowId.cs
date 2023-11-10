@@ -11,5 +11,6 @@ namespace ET
     	WindowID_Server,	//服务器列表
 		WindowID_Role,
 		WindowID_Main,
+		WindowID_Loading,
 	}
 }

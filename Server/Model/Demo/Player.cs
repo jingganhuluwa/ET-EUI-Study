@@ -14,7 +14,7 @@
 
         public long UnitId { get; set; }
 
-        public long SessionInstanceId { get; set; }
+        public Session ClientSession { get; set; }
 
         public PlayerState PlayerState { get; set; }
     }

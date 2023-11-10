@@ -18,10 +18,11 @@
             // 等待CreateMyUnit的消息
             WaitType.Wait_CreateMyUnit waitCreateMyUnit = await zoneScene.GetComponent<ObjectWait>().Wait<WaitType.Wait_CreateMyUnit>();
             M2C_CreateMyUnit m2CCreateMyUnit = waitCreateMyUnit.Message;
-            Unit unit = UnitFactory.Create(currentScene, m2CCreateMyUnit.Unit);
+            Unit unit = UnitFactory.Create(currentScene, m2CCreateMyUnit.Unit);     
             unitComponent.Add(unit);
-            
-            zoneScene.RemoveComponent<AIComponent>();
+
+
+            await TimerComponent.Instance.WaitAsync(2000);
             
             Game.EventSystem.PublishAsync(new EventType.SceneChangeFinish() {ZoneScene = zoneScene, CurrentScene = currentScene}).Coroutine();
 
