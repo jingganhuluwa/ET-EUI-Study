@@ -9,28 +9,29 @@ using System.Collections.Generic;
 namespace ET
 {
     [ObjectSystem]
-    public class UnitCacheComponentAwakeSystem:AwakeSystem<UnitCacheComponent>
+    [FriendClassAttribute(typeof(ET.UnitCache))]
+    public class UnitCacheComponentAwakeSystem : AwakeSystem<UnitCacheComponent>
     {
         public override void Awake(UnitCacheComponent self)
         {
             self.UnitCacheKeyList.Clear();
             foreach (Type type in Game.EventSystem.GetTypes().Values)
             {
-                if (type!=typeof(IUnitCache) && typeof(IUnitCache).IsAssignableFrom(type))
+                if (type != typeof(IUnitCache) && typeof(IUnitCache).IsAssignableFrom(type))
                 {
                     self.UnitCacheKeyList.Add(type.Name);
                 }
             }
-            
+
             foreach (string key in self.UnitCacheKeyList)
             {
                 UnitCache unitCache = self.AddChild<UnitCache>();
                 unitCache.Key = key;
-                self.UnitCacheDict.Add(key,unitCache);
+                self.UnitCacheDict.Add(key, unitCache);
             }
         }
     }
-    
+
     [ObjectSystem]
     public class UnitCacheComponentDestroySystem:DestroySystem<UnitCacheComponent>
     {
@@ -44,28 +45,29 @@ namespace ET
             self.UnitCacheDict.Clear();
         }
     }
-
+    [FriendClassAttribute(typeof(ET.UnitCacheComponent))]
+    [FriendClassAttribute(typeof(ET.UnitCache))]
     public static class UnitCacheComponentSystem
     {
-        public static async ETTask AddOrUpdate(this UnitCacheComponent self,long id, ListComponent<Entity> entityList)
+        public static async ETTask AddOrUpdate(this UnitCacheComponent self, long id, ListComponent<Entity> entityList)
         {
-            using (ListComponent<Entity> list=ListComponent<Entity>.Create())
+            using (ListComponent<Entity> list = ListComponent<Entity>.Create())
             {
                 foreach (Entity entity in entityList)
                 {
                     string key = entity.GetType().Name;
-                    if (!self.UnitCacheDict.TryGetValue(key,out UnitCache unitCache))
+                    if (!self.UnitCacheDict.TryGetValue(key, out UnitCache unitCache))
                     {
                         unitCache = self.AddChild<UnitCache>();
                         unitCache.Key = key;
-                        self.UnitCacheDict.Add(key,unitCache);
+                        self.UnitCacheDict.Add(key, unitCache);
                     }
 
                     unitCache.AddOrUpdate(entity);
                     list.Add(entity);
                 }
 
-                if (list.Count>0)
+                if (list.Count > 0)
                 {
                     await DBManagerComponent.Instance.GetZoneDB(self.DomainZone()).Save(id, list);
                 }
@@ -74,11 +76,11 @@ namespace ET
 
         public static async ETTask<Entity> Get(this UnitCacheComponent self, long unitId, string key)
         {
-            if (!self.UnitCacheDict.TryGetValue(key,out UnitCache unitCache))
+            if (!self.UnitCacheDict.TryGetValue(key, out UnitCache unitCache))
             {
                 unitCache = self.AddChild<UnitCache>();
                 unitCache.Key = key;
-                self.UnitCacheDict.Add(key,unitCache);
+                self.UnitCacheDict.Add(key, unitCache);
             }
 
             return await unitCache.Get(unitId);

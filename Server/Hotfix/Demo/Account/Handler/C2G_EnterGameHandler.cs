@@ -100,15 +100,22 @@ namespace ET
                     try
                     {
 
-                        GateMapComponent gateMapComponent = player.AddComponent<GateMapComponent>();
-                        gateMapComponent.Scene = await SceneFactory.Create(gateMapComponent, "GateMap", SceneType.Map);
+                        // GateMapComponent gateMapComponent = player.AddComponent<GateMapComponent>();
+                        // gateMapComponent.Scene = await SceneFactory.Create(gateMapComponent, "GateMap", SceneType.Map);
 
-                        Unit unit = UnitFactory.Create(gateMapComponent.Scene, player.Id, UnitType.Player);
-                        unit.AddComponent<UnitGateComponent, long>(session.InstanceId);
+                        //从数据库或缓存中加载出Unit实体及其相关组件
+                        (bool isNewPlayer,Unit unit)=await UnitHelper.LoadUnit(player);
+                        unit.AddComponent<UnitGateComponent, long>(player.InstanceId);
+                        
+                        //玩家Unit上线后初始化操作
+                        await UnitHelper.InitUnit(unit, isNewPlayer);
+                        
+                        //Unit unit = UnitFactory.Create(gateMapComponent.Scene, player.Id, UnitType.Player);
+                        //unit.AddComponent<UnitGateComponent, long>(session.InstanceId);
                         long unitId = unit.Id;
 
 
-                        StartSceneConfig startSceneConfig = StartSceneConfigCategory.Instance.GetBySceneName(session.DomainZone(), "Map1");
+                        StartSceneConfig startSceneConfig = StartSceneConfigCategory.Instance.GetBySceneName(session.DomainZone(), "Game");
                         await TransferHelper.Transfer(unit, startSceneConfig.InstanceId, startSceneConfig.Name);
 
 

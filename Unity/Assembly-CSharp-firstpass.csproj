@@ -184,6 +184,9 @@
      <Reference Include="UnityEngine.SubstanceModule">
      <HintPath>F:\Unity\Editor\2022.3.8f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.SubstanceModule.dll</HintPath>
      </Reference>
+     <Reference Include="UnityEngine.SubsystemsModule">
+     <HintPath>F:\Unity\Editor\2022.3.8f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.SubsystemsModule.dll</HintPath>
+     </Reference>
      <Reference Include="UnityEngine.TLSModule">
      <HintPath>F:\Unity\Editor\2022.3.8f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.TLSModule.dll</HintPath>
      </Reference>
@@ -247,6 +250,9 @@
      <Reference Include="UnityEngine.VFXModule">
      <HintPath>F:\Unity\Editor\2022.3.8f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.VFXModule.dll</HintPath>
      </Reference>
+     <Reference Include="UnityEngine.VRModule">
+     <HintPath>F:\Unity\Editor\2022.3.8f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.VRModule.dll</HintPath>
+     </Reference>
      <Reference Include="UnityEngine.VehiclesModule">
      <HintPath>F:\Unity\Editor\2022.3.8f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.VehiclesModule.dll</HintPath>
      </Reference>
@@ -258,6 +264,9 @@
      </Reference>
      <Reference Include="UnityEngine.WindModule">
      <HintPath>F:\Unity\Editor\2022.3.8f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.WindModule.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.XRModule">
+     <HintPath>F:\Unity\Editor\2022.3.8f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.XRModule.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor">
      <HintPath>F:\Unity\Editor\2022.3.8f1c1\Editor\Data\Managed\UnityEngine\UnityEditor.dll</HintPath>
@@ -712,11 +721,11 @@
      <Reference Include="com.unity.cinemachine.editor">
      <HintPath>F:\Unity\Project\ET-EUI-Study\Unity\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.Burst.Editor">
-     <HintPath>F:\Unity\Project\ET-EUI-Study\Unity\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.AI.Navigation">
      <HintPath>F:\Unity\Project\ET-EUI-Study\Unity\Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Burst.Editor">
+     <HintPath>F:\Unity\Project\ET-EUI-Study\Unity\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.2D.Common.Path.Editor">
      <HintPath>F:\Unity\Project\ET-EUI-Study\Unity\Library\ScriptAssemblies\Unity.2D.Common.Path.Editor.dll</HintPath>
@@ -766,6 +775,9 @@
      <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
      <HintPath>F:\Unity\Project\ET-EUI-Study\Unity\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.VSCode.Editor">
+     <HintPath>F:\Unity\Project\ET-EUI-Study\Unity\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.RenderPipelines.Universal.Editor">
      <HintPath>F:\Unity\Project\ET-EUI-Study\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
      </Reference>
@@ -777,6 +789,9 @@
      </Reference>
      <Reference Include="Unity.RenderPipelines.Universal.Runtime">
      <HintPath>F:\Unity\Project\ET-EUI-Study\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.PlasticSCM.Editor">
+     <HintPath>F:\Unity\Project\ET-EUI-Study\Unity\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst">
      <HintPath>F:\Unity\Project\ET-EUI-Study\Unity\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>

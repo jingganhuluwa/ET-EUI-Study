@@ -19,7 +19,7 @@ namespace ET
             self.Key = null;
         }
     }
-
+    [FriendClassAttribute(typeof(ET.UnitCache))]
     public static class UnitCacheSystem
     {
         public static void AddOrUpdate(this UnitCache self, Entity entity)
@@ -38,18 +38,18 @@ namespace ET
 
                 self.CacheComponentDict.Remove(entity.Id);
             }
-            
-            self.CacheComponentDict.Add(entity.Id,entity);
+
+            self.CacheComponentDict.Add(entity.Id, entity);
         }
 
         public static async ETTask<Entity> Get(this UnitCache self, long unitId)
         {
             Entity entity = null;
-            if (!self.CacheComponentDict.TryGetValue(unitId,out entity))
+            if (!self.CacheComponentDict.TryGetValue(unitId, out entity))
             {
                 entity = await DBManagerComponent.Instance.GetZoneDB(self.DomainZone())
                         .Query<Entity>(unitId, self.Key);
-                if (entity!=null)
+                if (entity != null)
                 {
                     self.AddOrUpdate(entity);
                 }
@@ -60,7 +60,7 @@ namespace ET
 
         public static void Delete(this UnitCache self, long unitId)
         {
-            if (self.CacheComponentDict.TryGetValue(unitId,out Entity entity))
+            if (self.CacheComponentDict.TryGetValue(unitId, out Entity entity))
             {
                 entity.Dispose();
                 self.CacheComponentDict.Remove(unitId);

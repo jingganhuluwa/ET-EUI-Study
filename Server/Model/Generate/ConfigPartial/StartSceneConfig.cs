@@ -32,7 +32,7 @@ namespace ET
             return this.ZoneScenesByName[zone][name];
         }
 
-        public StartSceneConfig GetUnitCache(long UnitId)
+        public StartSceneConfig GetUnitCacheConfig(long UnitId)
         {
             int zone = UnitIdStruct.GetUnitZone(UnitId);
             return UnitCaches[zone];

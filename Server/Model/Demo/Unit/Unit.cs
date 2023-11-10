@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace ET
 {
+    [ComponentOf(typeof(Scene))]
     public sealed class Unit: Entity, IAwake<int>
     {
         public int ConfigId; //配置表id
