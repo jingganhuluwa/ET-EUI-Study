@@ -17,87 +17,87 @@ namespace ET
         /// <summary>
         /// 网络错误
         /// </summary>
-        public const int Err_NetWorkError = 200002;
+        public const int ERR_NetWorkError = 200002;
 
         /// <summary>
         /// 帐号密码存在空
         /// </summary>
-        public const int Err_LoginInfoIsNull = 200003;
+        public const int ERR_LoginInfoIsNull = 200003;
 
         /// <summary>
         /// 账号格式错误
         /// </summary>
-        public const int Err_AccountNameFormError = 200004;
+        public const int ERR_AccountNameFormError = 200004;
 
         /// <summary>
         /// 密码格式错误
         /// </summary>
-        public const int Err_PasswordFormError = 200005;
+        public const int ERR_PasswordFormError = 200005;
 
         /// <summary>
         /// 帐号处于黑名单
         /// </summary>
-        public const int Err_AccountInBlackList = 200006;
+        public const int ERR_AccountInBlackList = 200006;
 
         /// <summary>
         /// 登陆密码错误
         /// </summary>
-        public const int Err_LoginPasswordError = 200007;
+        public const int ERR_LoginPasswordError = 200007;
 
         /// <summary>
         /// 请求重复
         /// </summary>
-        public const int Err_RequestRepeatedly = 200008;
+        public const int ERR_RequestRepeatedly = 200008;
         
         /// <summary>
         /// 令牌Token错误
         /// </summary>
-        public const int Err_TokenError = 200009;
+        public const int ERR_TokenError = 200009;
         
         /// <summary>
         /// 角色名为空
         /// </summary>
-        public const int Err_RoleNameIsNull = 200010;
+        public const int ERR_RoleNameIsNull = 200010;
         
         /// <summary>
         /// 角色名已存在
         /// </summary>
-        public const int Err_RoleNameIsExist = 200011;
+        public const int ERR_RoleNameIsExist = 200011;
         
         /// <summary>
         /// 角色不存在
         /// </summary>
-        public const int Err_RoleNoExist = 200012;
+        public const int ERR_RoleNoExist = 200012;
         
         /// <summary>
         /// 请求Scene错误
         /// </summary>
-        public const int Err_RequestSceneTypeError = 200013; 
+        public const int ERR_RequestSceneTypeError = 200013; 
         
         /// <summary>
         /// Gate Key验证失败
         /// </summary>
-        public const int Err_ConnectGateKeyError = 200014;
+        public const int ERR_ConnectGateKeyError = 200014;
         
         /// <summary>
         /// 帐号在其他地方登陆
         /// </summary>
-        public const int Err_OtherAccountLogin = 200015;
+        public const int ERR_OtherAccountLogin = 200015;
         
         /// <summary>
         /// SessionPlayer错误
         /// </summary>
-        public const int Err_SessionPlayerError = 200016;
+        public const int ERR_SessionPlayerError = 200016;
         
         /// <summary>
         /// 无Player错误
         /// </summary>
-        public const int Err_NonePlayerError = 200017;
+        public const int ERR_NonePlayerError = 200017;
         
         /// <summary>
         /// PlayerSession错误
         /// </summary>
-        public const int Err_PlayerSessionError = 200018;
+        public const int ERR_PlayerSessionError = 200018;
         
         /// <summary>
         /// Session状态错误
@@ -118,5 +118,19 @@ namespace ET
         /// 角色进入逻辑服错误
         /// </summary>
         public const int ERR_EnterGameError = 200022;
+        
+        /// <summary>
+        /// 数值类型不存在
+        /// </summary>
+        public const int ERR_NumericTypeNotExist = 200023;
+        
+        /// <summary>
+        /// 数值类型不可加点
+        /// </summary>
+        public const int ERR_NumericTypeNotAddPoint = 200024; 
+        /// <summary>
+        /// 属性点不足
+        /// </summary>
+        public const int ERR_AddPointNotEnough = 200025;
     }
 }

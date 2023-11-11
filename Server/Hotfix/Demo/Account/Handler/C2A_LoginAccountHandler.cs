@@ -26,7 +26,7 @@ namespace ET
 
             if (session.GetComponent<SessionLockingComponent>() != null)
             {
-                response.Error = ErrorCode.Err_RequestRepeatedly;
+                response.Error = ErrorCode.ERR_RequestRepeatedly;
                 reply();
                 session.Disconnect().Coroutine();
                 return;
@@ -35,7 +35,7 @@ namespace ET
             //校验客户端传来的帐号和密码是否为空
             if (string.IsNullOrEmpty(request.AccountName.Trim()) || string.IsNullOrEmpty(request.Password.Trim()))
             {
-                response.Error = ErrorCode.Err_LoginInfoIsNull;
+                response.Error = ErrorCode.ERR_LoginInfoIsNull;
                 reply();
                 session.Disconnect().Coroutine();
                 return;
@@ -44,7 +44,7 @@ namespace ET
             //校验客户端传来的帐号格式
             if (!Regex.IsMatch(request.AccountName.Trim(), @"^[a-zA-Z0-9]{6,15}$"))
             {
-                response.Error = ErrorCode.Err_AccountNameFormError;
+                response.Error = ErrorCode.ERR_AccountNameFormError;
                 reply();
                 session.Disconnect().Coroutine();
                 return;
@@ -53,7 +53,7 @@ namespace ET
             //校验客户端传来的密码格式
             if (!Regex.IsMatch(request.Password.Trim(), @"^[a-zA-Z0-9]+$"))
             {
-                response.Error = ErrorCode.Err_PasswordFormError;
+                response.Error = ErrorCode.ERR_PasswordFormError;
                 reply();
                 session.Disconnect().Coroutine();
                 return;
@@ -73,7 +73,7 @@ namespace ET
                         //检验帐号黑名单和密码
                         if (account.AccountType == (int) AccountType.BlackList)
                         {
-                            response.Error = ErrorCode.Err_AccountInBlackList;
+                            response.Error = ErrorCode.ERR_AccountInBlackList;
                             reply();
                             session.Disconnect().Coroutine();
                             account.Dispose();
@@ -82,7 +82,7 @@ namespace ET
 
                         if (!account.Password.Equals(request.Password.Trim()))
                         {
-                            response.Error = ErrorCode.Err_LoginPasswordError;
+                            response.Error = ErrorCode.ERR_LoginPasswordError;
                             reply();
                             session.Disconnect().Coroutine();
                             account.Dispose();

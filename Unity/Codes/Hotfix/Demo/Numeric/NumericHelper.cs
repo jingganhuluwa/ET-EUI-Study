@@ -21,7 +21,7 @@ namespace ET
             catch (Exception e)
             {
                 Log.Error(e.ToString());
-                return ErrorCode.Err_NetWorkError;
+                return ErrorCode.ERR_NetWorkError;
             }
 
             if (result.Error != ErrorCode.ERR_Success)
@@ -32,5 +32,33 @@ namespace ET
 
             return ErrorCode.ERR_Success;
         }
+        
+        /// <summary>
+        /// 加点
+        /// </summary>
+        public static async ETTask<int> ReqeustAddAttributePoint(Scene zoneScene,int numericType)
+        {
+            M2C_AddAttributePoint m2CAddAttributePoint = null;
+            try
+            {
+                m2CAddAttributePoint  =  (M2C_AddAttributePoint) await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2M_AddAttributePoint() { NumericType = numericType});
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                return ErrorCode.ERR_NetWorkError;
+                
+            }
+
+            if (m2CAddAttributePoint.Error != ErrorCode.ERR_Success)
+            {
+                Log.Error(m2CAddAttributePoint.Error.ToString());
+                return m2CAddAttributePoint.Error;
+            }
+            return ErrorCode.ERR_Success;
+        }
+        
+        
+
     }
 }

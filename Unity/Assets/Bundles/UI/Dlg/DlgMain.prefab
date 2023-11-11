@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 1566556198785597683}
   - component: {fileID: 2148514222281136273}
   m_Layer: 0
-  m_Name: Button (1)
+  m_Name: E_RoleInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

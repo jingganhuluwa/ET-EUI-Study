@@ -23,7 +23,7 @@ namespace ET
 
             if (session.GetComponent<SessionLockingComponent>() != null)
             {
-                response.Error = ErrorCode.Err_RequestRepeatedly;
+                response.Error = ErrorCode.ERR_RequestRepeatedly;
                 reply();
                 session.Disconnect().Coroutine();
                 return;
@@ -32,7 +32,7 @@ namespace ET
             SessionPlayerComponent sessionPlayerComponent = session.GetComponent<SessionPlayerComponent>();
             if (sessionPlayerComponent == null)
             {
-                response.Error = ErrorCode.Err_SessionPlayerError;
+                response.Error = ErrorCode.ERR_SessionPlayerError;
                 reply();
                 session.Disconnect().Coroutine();
                 return;
@@ -41,7 +41,7 @@ namespace ET
             Player player = Game.EventSystem.Get(sessionPlayerComponent.PlayerInstanceId) as Player;
             if (player == null || player.IsDisposed)
             {
-                response.Error = ErrorCode.Err_NonePlayerError;
+                response.Error = ErrorCode.ERR_NonePlayerError;
                 reply();
                 session.Disconnect().Coroutine();
                 return;
@@ -54,7 +54,7 @@ namespace ET
                 {
                     if (instanceId != session.InstanceId || player.IsDisposed)
                     {
-                        response.Error = ErrorCode.Err_PlayerSessionError;
+                        response.Error = ErrorCode.ERR_PlayerSessionError;
                         reply();
                         session.Disconnect().Coroutine();
                         return;

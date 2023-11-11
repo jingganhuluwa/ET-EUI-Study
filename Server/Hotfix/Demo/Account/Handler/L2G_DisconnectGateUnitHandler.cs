@@ -32,7 +32,7 @@ namespace ET
                     {
                         gateSession.GetComponent<SessionPlayerComponent>().IsLoginAgain = true;
                     }
-                    gateSession.Send(new A2C_Disconnect() { Error = ErrorCode.Err_OtherAccountLogin });
+                    gateSession.Send(new A2C_Disconnect() { Error = ErrorCode.ERR_OtherAccountLogin });
                     gateSession?.Disconnect().Coroutine();
                 }
 

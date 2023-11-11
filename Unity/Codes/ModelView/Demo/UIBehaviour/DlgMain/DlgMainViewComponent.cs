@@ -109,6 +109,40 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Button E_RoleInfoButton
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_RoleInfoButton == null )
+     			{
+		    		this.m_E_RoleInfoButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"BottomBar/E_RoleInfo");
+     			}
+     			return this.m_E_RoleInfoButton;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_RoleInfoImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_RoleInfoImage == null )
+     			{
+		    		this.m_E_RoleInfoImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"BottomBar/E_RoleInfo");
+     			}
+     			return this.m_E_RoleInfoImage;
+     		}
+     	}
+
 		public void DestroyWidget()
 		{
 			this.m_EXPImage = null;
@@ -117,6 +151,8 @@ namespace ET
 			this.m_E_LevelTextTextMeshProUGUI = null;
 			this.m_E_TestButtonButton = null;
 			this.m_E_TestButtonImage = null;
+			this.m_E_RoleInfoButton = null;
+			this.m_E_RoleInfoImage = null;
 			this.uiTransform = null;
 		}
 
@@ -126,6 +162,8 @@ namespace ET
 		private TMPro.TextMeshProUGUI m_E_LevelTextTextMeshProUGUI = null;
 		private UnityEngine.UI.Button m_E_TestButtonButton = null;
 		private UnityEngine.UI.Image m_E_TestButtonImage = null;
+		private UnityEngine.UI.Button m_E_RoleInfoButton = null;
+		private UnityEngine.UI.Image m_E_RoleInfoImage = null;
 		public Transform uiTransform = null;
 	}
 }

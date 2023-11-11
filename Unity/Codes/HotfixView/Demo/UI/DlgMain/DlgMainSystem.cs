@@ -12,6 +12,7 @@ namespace ET
         public static void RegisterUIEvent(this DlgMain self)
         {
             self.View.E_TestButtonButton.AddListenerAsync(() => { return self.OnTestButtonClick();} );
+            self.View.E_RoleInfoButton.AddListenerAsync(() => { return self.OnRoleInfoButtonClick();} );
         }
 
         public static void ShowWindow(this DlgMain self, Entity contextData = null)
@@ -43,6 +44,18 @@ namespace ET
             catch (Exception e)
             {
                 Log.Error(e);
+            }
+        }
+
+        public static async ETTask OnRoleInfoButtonClick(this DlgMain self)
+        {
+            try
+            {
+                await self.ZoneScene().GetComponent<UIComponent>().ShowWindowAsync(WindowID.WindowID_RoleInfo);
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
             }
         }
     }

@@ -22,7 +22,7 @@ namespace ET
             {
                 accountSession?.Dispose();
                 Log.Error(e.ToString());
-                return ErrorCode.Err_NetWorkError;
+                return ErrorCode.ERR_NetWorkError;
             }
 
             if (a2CLoginAccount.Error != ErrorCode.ERR_Success)
@@ -56,7 +56,7 @@ namespace ET
             catch (Exception e)
             {
                 Log.Error(e.ToString());
-                return ErrorCode.Err_NetWorkError;
+                return ErrorCode.ERR_NetWorkError;
             }
 
             if (a2CGetServerInfos.Error != ErrorCode.ERR_Success)
@@ -90,7 +90,7 @@ namespace ET
             catch (Exception e)
             {
                 Log.Error(e.ToString());
-                return ErrorCode.Err_NetWorkError;
+                return ErrorCode.ERR_NetWorkError;
             }
 
             if (a2CCreateRole.Error != ErrorCode.ERR_Success)
@@ -121,7 +121,7 @@ namespace ET
             catch (Exception e)
             {
                 Log.Error(e.ToString());
-                return ErrorCode.Err_NetWorkError;
+                return ErrorCode.ERR_NetWorkError;
             }
 
             if (result.Error != ErrorCode.ERR_Success)
@@ -156,7 +156,7 @@ namespace ET
             catch (Exception e)
             {
                 Log.Error(e.ToString());
-                return ErrorCode.Err_NetWorkError;
+                return ErrorCode.ERR_NetWorkError;
             }
 
             if (result.Error != ErrorCode.ERR_Success)
@@ -189,7 +189,7 @@ namespace ET
             catch (Exception e)
             {
                 Log.Error(e.ToString());
-                return ErrorCode.Err_NetWorkError;
+                return ErrorCode.ERR_NetWorkError;
             }
 
             if (result.Error != ErrorCode.ERR_Success)
@@ -224,7 +224,7 @@ namespace ET
             {
                 Log.Error(e.ToString());
                 session?.Dispose();
-                return ErrorCode.Err_NetWorkError;
+                return ErrorCode.ERR_NetWorkError;
             }
 
             session?.Dispose();
@@ -256,7 +256,7 @@ namespace ET
             {
                 Log.Error(e);
                 zoneScene.GetComponent<SessionComponent>().Session.Dispose();
-                return ErrorCode.Err_NetWorkError;
+                return ErrorCode.ERR_NetWorkError;
             }
 
             if (g2CLoginGameGate.Error != ErrorCode.ERR_Success)
@@ -278,7 +278,7 @@ namespace ET
             {
                 Log.Error(e);
                 zoneScene.GetComponent<SessionComponent>().Session.Dispose();
-                return ErrorCode.Err_NetWorkError;
+                return ErrorCode.ERR_NetWorkError;
             }
 
             if (g2CEnterGame.Error != ErrorCode.ERR_Success)

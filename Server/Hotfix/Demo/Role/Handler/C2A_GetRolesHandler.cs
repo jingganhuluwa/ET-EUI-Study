@@ -22,7 +22,7 @@ namespace ET
 
             if (session.GetComponent<SessionLockingComponent>() != null)
             {
-                response.Error = ErrorCode.Err_RequestRepeatedly;
+                response.Error = ErrorCode.ERR_RequestRepeatedly;
                 reply();
                 session.Disconnect().Coroutine();
                 return;
@@ -31,7 +31,7 @@ namespace ET
             string token = session.DomainScene().GetComponent<TokenComponent>().Get(request.AccountId);
             if (token == null || token != request.Token)
             {
-                response.Error = ErrorCode.Err_TokenError;
+                response.Error = ErrorCode.ERR_TokenError;
                 reply();
                 session.Disconnect().Coroutine();
                 return;

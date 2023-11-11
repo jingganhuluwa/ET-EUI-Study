@@ -22,7 +22,7 @@ namespace ET
 
             if (session.GetComponent<SessionLockingComponent>() != null)
             {
-                response.Error = ErrorCode.Err_RequestRepeatedly;
+                response.Error = ErrorCode.ERR_RequestRepeatedly;
                 reply();
                 session.Disconnect().Coroutine();
                 return;
@@ -31,7 +31,7 @@ namespace ET
             string token = session.DomainScene().GetComponent<TokenComponent>().Get(request.AccountId);
             if (token == null || token != request.Token)
             {
-                response.Error = ErrorCode.Err_TokenError;
+                response.Error = ErrorCode.ERR_TokenError;
                 reply();
                 session.Disconnect().Coroutine();
                 return;
@@ -39,7 +39,7 @@ namespace ET
 
             if (string.IsNullOrEmpty(request.Name))
             {
-                response.Error = ErrorCode.Err_RoleNameIsNull;
+                response.Error = ErrorCode.ERR_RoleNameIsNull;
                 reply();
                 return;
             }
@@ -54,7 +54,7 @@ namespace ET
                     if (roleInfos != null && roleInfos.Count > 0)
                     {
                         //同名
-                        response.Error = ErrorCode.Err_RoleNameIsExist;
+                        response.Error = ErrorCode.ERR_RoleNameIsExist;
                         reply();
                         return;
                     }

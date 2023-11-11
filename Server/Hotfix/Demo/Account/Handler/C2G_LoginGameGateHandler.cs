@@ -25,7 +25,7 @@ namespace ET
 
             if (session.GetComponent<SessionLockingComponent>() != null)
             {
-                response.Error = ErrorCode.Err_RequestRepeatedly;
+                response.Error = ErrorCode.ERR_RequestRepeatedly;
                 reply();
                 session.Disconnect().Coroutine();
                 return;
@@ -34,7 +34,7 @@ namespace ET
             string token = scene.GetComponent<GateSessionKeyComponent>().Get(request.AccountId);
             if (token == null || token != request.Key)
             {
-                response.Error = ErrorCode.Err_ConnectGateKeyError;
+                response.Error = ErrorCode.ERR_ConnectGateKeyError;
                 response.Message = "Gate Key验证失败";
                 reply();
                 session.Disconnect().Coroutine();

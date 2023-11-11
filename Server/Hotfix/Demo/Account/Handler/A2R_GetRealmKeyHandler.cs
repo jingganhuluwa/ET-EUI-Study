@@ -14,7 +14,7 @@ namespace ET
             if (session.DomainScene().SceneType != SceneType.Realm)
             {
                 Log.Error($"请求Scene错误,当前Scene为:{session.DomainScene().SceneType} ,非 SceneType.Realm");
-                response.Error = ErrorCode.Err_RequestSceneTypeError;
+                response.Error = ErrorCode.ERR_RequestSceneTypeError;
                 reply();
                 return;
             }
