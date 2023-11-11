@@ -75,12 +75,48 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Button E_TestButtonButton
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TestButtonButton == null )
+     			{
+		    		this.m_E_TestButtonButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"BottomBar/E_TestButton");
+     			}
+     			return this.m_E_TestButtonButton;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_TestButtonImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TestButtonImage == null )
+     			{
+		    		this.m_E_TestButtonImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"BottomBar/E_TestButton");
+     			}
+     			return this.m_E_TestButtonImage;
+     		}
+     	}
+
 		public void DestroyWidget()
 		{
 			this.m_EXPImage = null;
 			this.m_E_ExpTextTextMeshProUGUI = null;
 			this.m_E_GoldTextTextMeshProUGUI = null;
 			this.m_E_LevelTextTextMeshProUGUI = null;
+			this.m_E_TestButtonButton = null;
+			this.m_E_TestButtonImage = null;
 			this.uiTransform = null;
 		}
 
@@ -88,6 +124,8 @@ namespace ET
 		private TMPro.TextMeshProUGUI m_E_ExpTextTextMeshProUGUI = null;
 		private TMPro.TextMeshProUGUI m_E_GoldTextTextMeshProUGUI = null;
 		private TMPro.TextMeshProUGUI m_E_LevelTextTextMeshProUGUI = null;
+		private UnityEngine.UI.Button m_E_TestButtonButton = null;
+		private UnityEngine.UI.Image m_E_TestButtonImage = null;
 		public Transform uiTransform = null;
 	}
 }

@@ -32,5 +32,9 @@
 	    public const int Exp = 1004;
 	    public const int Gold = 1005;
 	    public const int Level = 1006;
+	    
+	    public const int Position = 1007;
+	    public const int Height = 1008;
+	    public const int Weight = 1009;
     }
 }
