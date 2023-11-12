@@ -49,7 +49,7 @@ namespace ET
                         case PlayerState.Gate:
                             break;
                         case PlayerState.Game:
-                            //todo 通知游戏逻辑服下线Unit角色逻辑，并将数据存入数据库
+                            // 通知游戏逻辑服下线Unit角色逻辑，并将数据存入数据库
                              var m2GRequestExitGame = (M2G_RequestExitGame)await MessageHelper.CallLocationActor(player.UnitId,new G2M_RequestExitGame());
 
                             //通知移除账号角色登录信息

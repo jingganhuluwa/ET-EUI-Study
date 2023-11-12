@@ -15,7 +15,7 @@ namespace ET
         public static async ETTask AddOrUpdateUnitCache<T>(this T self) where T : Entity, IUnitCache
         {
             Other2UnitCache_AddOrUpdateUnit message = new Other2UnitCache_AddOrUpdateUnit() { UnitId = self.Id };
-            message.EntityType.Add(typeof (T).Name);
+            message.EntityTypes.Add(typeof (T).Name);
             message.EntityBytes.Add(MongoHelper.ToBson(self));
             long instanceId = StartSceneConfigCategory.Instance.GetUnitCacheConfig(self.Id).InstanceId;
             await MessageHelper.CallActor(instanceId, message);
@@ -86,7 +86,7 @@ namespace ET
         {
             Other2UnitCache_AddOrUpdateUnit message = new Other2UnitCache_AddOrUpdateUnit(){UnitId = unit.Id};
             long instanceId = StartSceneConfigCategory.Instance.GetUnitCacheConfig(unit.Id).InstanceId;
-            message.EntityType.Add(unit.GetType().FullName);
+            message.EntityTypes.Add(unit.GetType().FullName);
             message.EntityBytes.Add(MongoHelper.ToBson(unit));
             
             foreach ((Type key, Entity entity) in unit.Components)
@@ -95,7 +95,7 @@ namespace ET
                 {
                     continue;
                 }
-                message.EntityType.Add(key.FullName);
+                message.EntityTypes.Add(key.FullName);
                 message.EntityBytes.Add(MongoHelper.ToBson(entity));
             }
             

@@ -286,7 +286,7 @@ message Other2UnitCache_AddOrUpdateUnit // IActorRequest
 {
     int32 RpcId = 90;
     int64 UnitId = 1;                 //缓存的UnitId
-    repeated string EntityType = 2;   //实体类型
+    repeated string EntityTypes = 2;   //实体类型
     repeated bytes EntityBytes = 3;   //实体实例化后的bytes
 }
 

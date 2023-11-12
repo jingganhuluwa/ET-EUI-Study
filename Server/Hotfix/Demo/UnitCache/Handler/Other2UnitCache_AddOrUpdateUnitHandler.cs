@@ -23,9 +23,9 @@ namespace ET
             UnitCacheComponent unitCacheComponent = scene.GetComponent<UnitCacheComponent>();
             using (ListComponent<Entity> entityList=ListComponent<Entity>.Create())
             {
-                for (var index = 0; index < request.EntityType.Count; index++)
+                for (var index = 0; index < request.EntityTypes.Count; index++)
                 {
-                    Type type = Game.EventSystem.GetType(request.EntityType[index]);
+                    Type type = Game.EventSystem.GetType(request.EntityTypes[index]);
                     Entity entity = MongoHelper.FromBson(type,request.EntityBytes[index]) as Entity;
                     entityList.Add(entity);
                 }

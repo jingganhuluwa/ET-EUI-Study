@@ -569,7 +569,7 @@ namespace ET
 		public long UnitId { get; set; }
 
 		[ProtoMember(2)]
-		public List<string> EntityType = new List<string>();
+		public List<string> EntityTypes = new List<string>();
 
 		[ProtoMember(3)]
 		public List<byte[]> EntityBytes = new List<byte[]>();

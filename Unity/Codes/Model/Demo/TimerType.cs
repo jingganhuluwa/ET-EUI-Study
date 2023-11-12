@@ -11,6 +11,10 @@
         public const int AccountSessionCheckOutTime= 1004;
         
         public const int PlayerOfflineOutTime= 1005;
+        
+        public const int SaveChangeDBData= 1006;
+        
+        
         // 不能超过10000
     }
 }
