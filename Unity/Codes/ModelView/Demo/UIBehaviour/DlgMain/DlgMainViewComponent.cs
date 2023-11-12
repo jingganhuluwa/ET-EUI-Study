@@ -143,6 +143,40 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Button E_AdventureButton
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_AdventureButton == null )
+     			{
+		    		this.m_E_AdventureButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"BottomBar/E_Adventure");
+     			}
+     			return this.m_E_AdventureButton;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_AdventureImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_AdventureImage == null )
+     			{
+		    		this.m_E_AdventureImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"BottomBar/E_Adventure");
+     			}
+     			return this.m_E_AdventureImage;
+     		}
+     	}
+
 		public void DestroyWidget()
 		{
 			this.m_EXPImage = null;
@@ -153,6 +187,8 @@ namespace ET
 			this.m_E_TestButtonImage = null;
 			this.m_E_RoleInfoButton = null;
 			this.m_E_RoleInfoImage = null;
+			this.m_E_AdventureButton = null;
+			this.m_E_AdventureImage = null;
 			this.uiTransform = null;
 		}
 
@@ -164,6 +200,8 @@ namespace ET
 		private UnityEngine.UI.Image m_E_TestButtonImage = null;
 		private UnityEngine.UI.Button m_E_RoleInfoButton = null;
 		private UnityEngine.UI.Image m_E_RoleInfoImage = null;
+		private UnityEngine.UI.Button m_E_AdventureButton = null;
+		private UnityEngine.UI.Image m_E_AdventureImage = null;
 		public Transform uiTransform = null;
 	}
 }

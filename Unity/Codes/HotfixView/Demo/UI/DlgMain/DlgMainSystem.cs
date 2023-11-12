@@ -13,6 +13,7 @@ namespace ET
         {
             self.View.E_TestButtonButton.AddListenerAsync(() => { return self.OnTestButtonClick();} );
             self.View.E_RoleInfoButton.AddListenerAsync(() => { return self.OnRoleInfoButtonClick();} );
+            self.View.E_AdventureButton.AddListenerAsync(() => { return self.OnAdventureButtonClick();} );
         }
 
         public static void ShowWindow(this DlgMain self, Entity contextData = null)
@@ -52,6 +53,17 @@ namespace ET
             try
             {
                 await self.ZoneScene().GetComponent<UIComponent>().ShowWindowAsync(WindowID.WindowID_RoleInfo);
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+            }
+        }
+        public static async ETTask OnAdventureButtonClick(this DlgMain self)
+        {
+            try
+            {
+                await self.ZoneScene().GetComponent<UIComponent>().ShowWindowAsync(WindowID.WindowID_Adventure);
             }
             catch (Exception e)
             {

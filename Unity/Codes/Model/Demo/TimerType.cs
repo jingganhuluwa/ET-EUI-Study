@@ -14,6 +14,8 @@
         
         public const int SaveChangeDBData= 1006;
         
+        public const int BattleRound= 1007;
+        
         
         // 不能超过10000
     }

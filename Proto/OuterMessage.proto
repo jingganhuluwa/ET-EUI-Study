@@ -453,3 +453,17 @@ message M2C_AddAttributePoint // IActorLocationResponse
     int32 Error = 91;
     string Message = 92;
 }
+
+//ResponseType M2C_StartGameLevel
+message C2M_StartGameLevel // IActorLocationRequest
+{
+    int32 RpcId = 90;
+    int32 LevelId = 1;
+}
+
+message M2C_StartGameLevel // IActorLocationResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
