@@ -19,7 +19,8 @@ namespace ET
             go.transform.SetParent(GlobalComponent.Instance.Unit, true);
 
             args.Unit.AddComponent<GameObjectComponent>().GameObject = go;
-            //args.Unit.GetComponent<GameObjectComponent>().SpriteRenderer = go.GetComponent<SpriteRenderer>();
+            args.Unit.GetComponent<GameObjectComponent>().SpriteRenderers = go.GetComponentsInChildren<SpriteRenderer>();
+            
             args.Unit.AddComponent<AnimatorComponent>();
 
             args.Unit.Position = args.Unit.Type == UnitType.Player? new Vector3(-4f, 0, 0) : new Vector3(1.5f, RandomHelper.RandomNumber(-1, 1), 0);

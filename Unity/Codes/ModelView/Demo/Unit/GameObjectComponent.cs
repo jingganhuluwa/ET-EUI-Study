@@ -7,6 +7,6 @@ namespace ET
     {
         public GameObject GameObject { get; set; }
         
-        public SpriteRenderer SpriteRenderer{ get; set; }
+        public SpriteRenderer[] SpriteRenderers{ get; set; }
     }
 }

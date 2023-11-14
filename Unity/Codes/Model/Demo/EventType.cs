@@ -41,6 +41,13 @@ namespace ET
             public Scene ZoneScene;
         }
         
+        public struct ShowDamageValueView
+        {
+            public Scene ZoneScene;
+            public Unit TargetUnit;
+            public long DamamgeValue;
+        }
+        
         public struct SceneChangeStart
         {
             public Scene ZoneScene;
