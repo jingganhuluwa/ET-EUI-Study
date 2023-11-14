@@ -63,7 +63,7 @@ namespace ET
 				}
 				self.ZoneScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_Adventure);
 				
-				//self.ZoneScene().CurrentScene().GetComponent<AdventureComponent>().StartAdventure().Coroutine();
+				self.ZoneScene().CurrentScene().GetComponent<AdventureComponent>().StartAdventure().Coroutine();
 			}
 			catch (Exception e)
 			{
