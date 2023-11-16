@@ -59,5 +59,11 @@ namespace ET
 			public AOIEntity A;
 			public AOIEntity B;
 		}
+		
+		public struct BattleWin
+		{
+			public Unit Unit;
+			public int  LevelId;
+		}
 	}
 }

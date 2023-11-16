@@ -26,7 +26,7 @@ namespace ET
             self.Round = 0;
             self.EnemyIdList.Clear();
             self.AliveEnemyIdList.Clear();
-            //self.Random = null;
+            self.Random = null;
         }
     }
     

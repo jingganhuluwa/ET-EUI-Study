@@ -141,5 +141,27 @@ namespace ET
         public const int ERR_AdventureErrorLevel = 200029;
         
         public const int ERR_AdventureLevelNotEnough = 200030;
+        
+        /// <summary>
+        /// 关卡ID错误
+        /// </summary>
+        public const int ERR_AdventureLevelIdError = 200031;
+        
+        /// <summary>
+        /// 战斗回合数异常
+        /// </summary>
+        public const int ERR_AdventureRoundError = 200032;
+        
+        /// <summary>
+        /// 胜利结果错误
+        /// </summary>
+        public const int ERR_AdventureWinResultError = 200033;
+        
+        /// <summary>
+        /// 冒险结果错误
+        /// </summary>
+        public const int ERR_AdventureResultError = 200034;
+        
+        
     }
 }
