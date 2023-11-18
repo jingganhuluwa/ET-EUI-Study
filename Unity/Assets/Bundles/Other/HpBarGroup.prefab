@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 387757245985967457}
   - component: {fileID: 1230025427700637604}
   - component: {fileID: 8487110550264541364}
+  - component: {fileID: 2757102844134172260}
   m_Layer: 0
   m_Name: HpText
   m_TagString: Untagged
@@ -256,6 +257,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1230025427700637604}
   m_maskType: 0
+--- !u!210 &2757102844134172260
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978958810971686116}
+  m_Enabled: 1
+  m_SortingLayerID: 2109101451
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &2685623593201161279
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +278,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5364610704783042724}
-  - component: {fileID: -2136662958312681716}
   m_Layer: 0
   m_Name: HpBarGroup
   m_TagString: Untagged
@@ -291,18 +303,6 @@ Transform:
   - {fileID: 387757245985967457}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!210 &-2136662958312681716
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2685623593201161279}
-  m_Enabled: 1
-  m_SortingLayerID: 2109101451
-  m_SortingLayer: 1
-  m_SortingOrder: 0
-  m_SortAtRoot: 0
 --- !u!1 &3488877237015126530
 GameObject:
   m_ObjectHideFlags: 0

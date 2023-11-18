@@ -18,6 +18,7 @@ namespace ET
 			self.View.ES_AttributeItem2.RegisterEvent(NumericType.Agile);
 			self.View.ES_AttributeItem3.RegisterEvent(NumericType.Spirit);
 			self.View.ELoopScrollList_AttributeLoopVerticalScrollRect.AddItemRefreshListener(( transform,  index) => { self.OnAttributeItemRefreshHandler(transform,index); });
+			self.View.E_LevelUpButton.AddListenerAsync(self.OnLevelUpBUttonHandler);
 		}
 
 		public static void ShowWindow(this DlgRoleInfo self, Entity contextData = null)
@@ -52,6 +53,24 @@ namespace ET
 			scrollItemAttribute.EAttributeValueTextMeshProUGUI.text = config.isPrecent == 0? 
 					numericComponent.GetAsLong(config.Id).ToString():
 					$"{numericComponent.GetAsFloat(config.Id):0.00}%";
+		}
+		
+		public static async ETTask OnLevelUpBUttonHandler(this DlgRoleInfo self)
+		{
+			try
+			{
+				int errorCode = await NumericHelper.ReqeustUpRoleLevel(self.ZoneScene());
+
+				if (errorCode != ErrorCode.ERR_Success)
+				{
+					return;
+				}
+				self.Refresh();
+			}
+			catch (Exception e)
+			{
+				Log.Error(e.ToString());
+			}
 		}
 
 	}

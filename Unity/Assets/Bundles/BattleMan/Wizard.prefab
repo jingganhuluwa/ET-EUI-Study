@@ -88,6 +88,8 @@ MonoBehaviour:
     gameObject: {fileID: 7217714828881597052}
   - key: HpBarText
     gameObject: {fileID: 8144129168169034817}
+  - key: Body
+    gameObject: {fileID: 4705613635786667328}
 --- !u!1001 &4105362946132217688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1257,6 +1259,12 @@ PrefabInstance:
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -3791651542596152443, guid: dde2588f5e0bc7b4ab407c1ae99bd5c1,
     type: 3}
+--- !u!1 &4705613635786667328 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -453562347444798952, guid: dde2588f5e0bc7b4ab407c1ae99bd5c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 4105362946132217688}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7478621442821964538 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2364307010229973598, guid: dde2588f5e0bc7b4ab407c1ae99bd5c1,

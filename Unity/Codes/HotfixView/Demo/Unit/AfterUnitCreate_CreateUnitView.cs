@@ -19,7 +19,7 @@ namespace ET
             go.transform.SetParent(GlobalComponent.Instance.Unit, true);
 
             args.Unit.AddComponent<GameObjectComponent>().GameObject = go;
-            args.Unit.GetComponent<GameObjectComponent>().SpriteRenderers = go.GetComponentsInChildren<SpriteRenderer>();
+            args.Unit.GetComponent<GameObjectComponent>().SpriteRenderers = (go.GetComponent<ReferenceCollector>().GetObject("Body") as GameObject).GetComponentsInChildren<SpriteRenderer>();
             
             args.Unit.AddComponent<AnimatorComponent>();
             args.Unit.AddComponent<HeadHpViewComponent>();

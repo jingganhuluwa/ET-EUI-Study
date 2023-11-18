@@ -58,6 +58,40 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Button E_LevelUpButton
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_LevelUpButton == null )
+     			{
+		    		this.m_E_LevelUpButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"TopBackGroup/E_LevelUp");
+     			}
+     			return this.m_E_LevelUpButton;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_LevelUpImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_LevelUpImage == null )
+     			{
+		    		this.m_E_LevelUpImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"TopBackGroup/E_LevelUp");
+     			}
+     			return this.m_E_LevelUpImage;
+     		}
+     	}
+
 		public TMPro.TextMeshProUGUI E_AttributePointTextMeshProUGUI
      	{
      		get
@@ -169,6 +203,8 @@ namespace ET
 			this.m_E_CloseButton = null;
 			this.m_E_CloseImage = null;
 			this.m_E_CombatEffectivenessTextMeshProUGUI = null;
+			this.m_E_LevelUpButton = null;
+			this.m_E_LevelUpImage = null;
 			this.m_E_AttributePointTextMeshProUGUI = null;
 			this.m_es_attributeitem?.Dispose();
 			this.m_es_attributeitem = null;
@@ -185,6 +221,8 @@ namespace ET
 		private UnityEngine.UI.Button m_E_CloseButton = null;
 		private UnityEngine.UI.Image m_E_CloseImage = null;
 		private TMPro.TextMeshProUGUI m_E_CombatEffectivenessTextMeshProUGUI = null;
+		private UnityEngine.UI.Button m_E_LevelUpButton = null;
+		private UnityEngine.UI.Image m_E_LevelUpImage = null;
 		private TMPro.TextMeshProUGUI m_E_AttributePointTextMeshProUGUI = null;
 		private ES_AttributeItem m_es_attributeitem = null;
 		private ES_AttributeItem m_es_attributeitem1 = null;

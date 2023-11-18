@@ -789,6 +789,8 @@ MonoBehaviour:
     gameObject: {fileID: 8307202338234702079}
   - key: HpText
     gameObject: {fileID: 5671740597552643609}
+  - key: Body
+    gameObject: {fileID: 117150393779553011}
 --- !u!1 &188064519148664878
 GameObject:
   m_ObjectHideFlags: 0

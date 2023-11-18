@@ -162,6 +162,16 @@ namespace ET
         /// </summary>
         public const int ERR_AdventureResultError = 200034;
         
+        /// <summary>
+        /// 升级经验不足
+        /// </summary>
+        public const int ERR_ExpNotEnough = 200036;
+
+        /// <summary>
+        /// 升级后经验错误
+        /// </summary>
+        public const int ERR_ExpNumError = 200037;
         
+        public const int ERR_InAdventureState = 200038;
     }
 }
