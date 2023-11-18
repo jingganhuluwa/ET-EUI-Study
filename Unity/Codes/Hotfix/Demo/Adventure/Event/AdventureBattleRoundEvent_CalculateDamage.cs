@@ -12,7 +12,7 @@ namespace ET
                 return;
             }
 
-            //SRandom random = args.ZoneScene.CurrentScene().GetComponent<AdventureComponent>().Random;
+            SRandom random = args.ZoneScene.CurrentScene().GetComponent<AdventureComponent>().Random;
             
             //int damage = DamageCalcuateHelper.CalcuateDamageValue(args.AttackUnit, args.TargetUnit, ref random);
             int damage = args.TargetUnit.GetComponent<NumericComponent>().GetAsInt(NumericType.DamageValue);
@@ -28,10 +28,10 @@ namespace ET
             Log.Debug($"************* {args.AttackUnit.Type}攻击造成伤害: {damage} ***************");
             Log.Debug($"************* {args.TargetUnit.Type}被攻击剩余血量: {HP} ***************");
             
-            // Game.EventSystem.PublishAsync(new EventType.ShowDamageValueView()
-            // {
-            //     ZoneScene = args.ZoneScene,TargetUnit = args.TargetUnit,DamamgeValue = damage
-            // }).Coroutine();
+            Game.EventSystem.PublishAsync(new EventType.ShowDamageValueView()
+            {
+                ZoneScene = args.ZoneScene,TargetUnit = args.TargetUnit,DamamgeValue = damage
+            }).Coroutine();
             
 
             await ETTask.CompletedTask;

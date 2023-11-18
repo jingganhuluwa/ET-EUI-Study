@@ -19,7 +19,7 @@
 
             await TimerComponent.Instance.WaitAsync(3000);
             
-            //args.ZoneScene?.CurrentScene()?.GetComponent<AdventureComponent>()?.ShowAdventureHpBarInfo(false);
+            args.ZoneScene?.CurrentScene()?.GetComponent<AdventureComponent>()?.ShowAdventureHpBarInfo(false);
             args.ZoneScene?.CurrentScene()?.GetComponent<AdventureComponent>()?.ResetAdventure();
             
             await ETTask.CompletedTask;

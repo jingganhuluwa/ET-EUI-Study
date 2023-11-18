@@ -3,6 +3,7 @@
 // 描述：
 // 日期：2023/11/13 23:36
 
+using ET.EventType;
 using UnityEngine;
 
 namespace ET
@@ -34,6 +35,19 @@ namespace ET
     [FriendClassAttribute(typeof(ET.AdventureComponent))]
     public static class AdventureComponentSystem
     {
+        public static void SetBattleRandomSeed(this AdventureComponent self)
+        {
+            uint seed = (uint) UnitHelper.GetMyUnitFromCurrentScene(self.ZoneScene().CurrentScene()).GetComponent<NumericComponent>().GetAsInt(NumericType.BattleRandomSeed);
+            if (self.Random == null)
+            {
+                self.Random = new SRandom(seed);
+            }
+            else
+            {
+                self.Random.SetRandomSeed(seed);
+            }
+        }
+        
         public static void ResetAdventure(this AdventureComponent self)
         {
             foreach (long enemyId in self.EnemyIdList)
@@ -60,8 +74,22 @@ namespace ET
         {
             self.ResetAdventure();
             await self.CreateAdventureEnemy();
-            //self.ShowAdventureHpBarInfo(true);
+            self.ShowAdventureHpBarInfo(true);
             self.BattleTimer = TimerComponent.Instance.NewOnceTimer(TimeHelper.ServerNow() + 500, TimerType.BattleRound, self);
+        }
+        
+        public static  void  ShowAdventureHpBarInfo(this AdventureComponent self,bool isShow)
+        {
+            Unit myUnit = UnitHelper.GetMyUnitFromCurrentScene(self.ZoneScene().CurrentScene());
+            ShowAdventureHpBar.Instance.Unit = myUnit;
+            ShowAdventureHpBar.Instance.isShow = isShow;
+            Game.EventSystem.PublishClass(ShowAdventureHpBar.Instance);
+            for ( int i = 0; i < self.EnemyIdList.Count; i++ )
+            {
+                Unit monsterUnit =  self.ZoneScene().CurrentScene().GetComponent<UnitComponent>().Get(self.EnemyIdList[i]);
+                ShowAdventureHpBar.Instance.Unit = monsterUnit;
+                Game.EventSystem.PublishClass(ShowAdventureHpBar.Instance);
+            }
         }
         
         public static async ETTask CreateAdventureEnemy(this AdventureComponent self)

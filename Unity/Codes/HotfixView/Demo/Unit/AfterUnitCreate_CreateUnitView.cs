@@ -22,6 +22,7 @@ namespace ET
             args.Unit.GetComponent<GameObjectComponent>().SpriteRenderers = go.GetComponentsInChildren<SpriteRenderer>();
             
             args.Unit.AddComponent<AnimatorComponent>();
+            args.Unit.AddComponent<HeadHpViewComponent>();
 
             args.Unit.Position = args.Unit.Type == UnitType.Player? new Vector3(-4f, 0, 0) : new Vector3(1.5f, RandomHelper.RandomNumber(-1, 1), 0);
 

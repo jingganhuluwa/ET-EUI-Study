@@ -19,12 +19,12 @@ namespace ET
                 return;
             }
             
-            if ( numericComponent.GetAsInt(NumericType.DyingState) != 0 )
-            {
-                response.Error = ErrorCode.ERR_AdventureInDying;
-                reply();
-                return;
-            }
+            // if ( numericComponent.GetAsInt(NumericType.DyingState) != 0 )
+            // {
+            //     response.Error = ErrorCode.ERR_AdventureInDying;
+            //     reply();
+            //     return;
+            // }
             
             if ( !BattleLevelConfigCategory.Instance.Contain(request.LevelId) )
             {

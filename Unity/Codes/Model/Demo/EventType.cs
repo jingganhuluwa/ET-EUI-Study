@@ -48,6 +48,18 @@ namespace ET
             public long DamamgeValue;
         }
         
+        public class ShowAdventureHpBar : DisposeObject
+        {
+            public static readonly ShowAdventureHpBar Instance = new ShowAdventureHpBar();
+            public Unit Unit;
+            public bool isShow;
+            
+            public override void Dispose()
+            {
+                this.Unit = null;
+            }
+        }
+        
         public struct SceneChangeStart
         {
             public Scene ZoneScene;
