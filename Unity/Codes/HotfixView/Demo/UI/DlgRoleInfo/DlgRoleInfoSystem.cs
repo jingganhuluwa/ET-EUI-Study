@@ -19,8 +19,21 @@ namespace ET
 			self.View.ES_AttributeItem3.RegisterEvent(NumericType.Spirit);
 			self.View.ELoopScrollList_AttributeLoopVerticalScrollRect.AddItemRefreshListener(( transform,  index) => { self.OnAttributeItemRefreshHandler(transform,index); });
 			self.View.E_LevelUpButton.AddListenerAsync(self.OnLevelUpBUttonHandler);
+			
+			RedDotHelper.AddRedDotNodeView(self.ZoneScene(), "UpLevelButton", self.View.E_LevelUpButton.gameObject, Vector3.one, new Vector3(115f,10f,0));
+			RedDotHelper.AddRedDotNodeView(self.ZoneScene(), "AddAttribute", self.View.E_AttributePointTextMeshProUGUI.gameObject, new Vector3(0.5f,0.5f,1), new Vector3(-17,10f,0));
 		}
 
+		public static void OnUnLoadWindow(this DlgRoleInfo self)
+		{
+			RedDotMonoView redDotMonoView = self.View.E_LevelUpButton.gameObject.GetComponent<RedDotMonoView>();
+			RedDotHelper.RemoveRedDotView(self.ZoneScene(),"UpLevelButton",out redDotMonoView);
+			
+			redDotMonoView =  self.View.E_AttributePointTextMeshProUGUI.gameObject.GetComponent<RedDotMonoView>();
+			RedDotHelper.RemoveRedDotView(self.ZoneScene(),"AddAttribute",out redDotMonoView);
+		}
+		
+		
 		public static void ShowWindow(this DlgRoleInfo self, Entity contextData = null)
 		{
 			self.Refresh();

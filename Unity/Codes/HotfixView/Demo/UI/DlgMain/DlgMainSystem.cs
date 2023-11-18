@@ -14,8 +14,17 @@ namespace ET
             self.View.E_TestButtonButton.AddListenerAsync(() => { return self.OnTestButtonClick();} );
             self.View.E_RoleInfoButton.AddListenerAsync(() => { return self.OnRoleInfoButtonClick();} );
             self.View.E_AdventureButton.AddListenerAsync(() => { return self.OnAdventureButtonClick();} );
+            
+            RedDotHelper.AddRedDotNodeView(self.ZoneScene(), "Role", self.View.E_RoleInfoButton.gameObject, Vector3.one, new Vector3(75,55,0));
         }
 
+        public static void OnUnLoadWindow(this DlgMain self)
+        {
+            RedDotMonoView redDotMonoView = self.View.E_RoleInfoButton.GetComponent<RedDotMonoView>();
+            RedDotHelper.RemoveRedDotView(self.ZoneScene(),"Role",out redDotMonoView);
+            
+        }
+        
         public static void ShowWindow(this DlgMain self, Entity contextData = null)
         {
             self.Refresh().Coroutine();
