@@ -18,9 +18,9 @@ namespace ET
         
         public static void OnShowItemEntryPopUpHandler(this Scroll_Item_BagItem self, long Id)
         {
-            // self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_ItemPopUp);
-            // Item item = self.ZoneScene().GetComponent<BagComponent>().GetItemById(Id);
-            // self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgItemPopUp>().RefreshInfo(item,ItemContainerType.Bag);
+            self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_ItemPopUp);
+            Item item = self.ZoneScene().GetComponent<BagComponent>().GetItemById(Id);
+            self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgItemPopUp>().RefreshInfo(item,ItemContainerType.Bag);
         }
     }
 }

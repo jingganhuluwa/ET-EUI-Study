@@ -40,6 +40,16 @@ namespace ET
 			
 		}
 
+		public static void RefreshEquipShowItems(this DlgRoleInfo self)
+		{
+			// self.View.ES_EquipItem_Head.RefreshShowItem(EquipPosition.Head);
+			// self.View.ES_EquipItem_Clothes.RefreshShowItem(EquipPosition.Clothes);
+			// self.View.ES_EquipItem_Shoes.RefreshShowItem(EquipPosition.Shoes);
+			// self.View.ES_EquipItem_Ring.RefreshShowItem(EquipPosition.Ring);
+			// self.View.ES_EquipItem_Weapon.RefreshShowItem(EquipPosition.Weapon);
+			// self.View.ES_EquipItem_Shield.RefreshShowItem(EquipPosition.Shield);
+		}
+		
 		public static void Refresh(this DlgRoleInfo self)
 		{
 			self.View.ES_AttributeItem.Refresh(NumericType.Power);

@@ -33,6 +33,11 @@ namespace ET
 			m2CCreateUnits.Unit = UnitHelper.CreateUnitInfo(unit);
 			MessageHelper.SendToClient(unit, m2CCreateUnits);
 
+			//通知客户端同步背包信息
+			ItemUpdateNoticeHelper.SyncAllBagItems(unit);
+			ItemUpdateNoticeHelper.SyncAllEquipItems(unit);
+			
+			
 			unit.AddComponent<NumericNoticeComponent>();
 			unit.AddComponent<AdventureCheckComponent>();
 			

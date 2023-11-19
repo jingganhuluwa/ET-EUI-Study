@@ -15,5 +15,7 @@ namespace ET
 		WindowID_RoleInfo,
 		WindowID_Adventure,
 		WindowID_Bag,
+		WindowID_ItemPopup,
+		WindowID_ItemPopUp,
 	}
 }
