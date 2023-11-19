@@ -108,5 +108,11 @@
         public const int IsAlive = 3013; //存活状态  0为死亡 1为活着
         
         public const int BattleRandomSeed = 3014;    //战斗随机数种子
+        
+        public const int MaxBagCapacity  = 3015;   //背包最大负重
+        
+        public const int IronStone = 3016; //铁矿石
+
+        public const int Fur       = 3017; //皮毛
     }
 }

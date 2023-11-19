@@ -75,7 +75,7 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Button E_TestButtonButton
+		public UnityEngine.UI.Button E_BagButton
      	{
      		get
      		{
@@ -84,15 +84,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_E_TestButtonButton == null )
+     			if( this.m_E_BagButton == null )
      			{
-		    		this.m_E_TestButtonButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"BottomBar/E_TestButton");
+		    		this.m_E_BagButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"BottomBar/E_Bag");
      			}
-     			return this.m_E_TestButtonButton;
+     			return this.m_E_BagButton;
      		}
      	}
 
-		public UnityEngine.UI.Image E_TestButtonImage
+		public UnityEngine.UI.Image E_BagImage
      	{
      		get
      		{
@@ -101,11 +101,11 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_E_TestButtonImage == null )
+     			if( this.m_E_BagImage == null )
      			{
-		    		this.m_E_TestButtonImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"BottomBar/E_TestButton");
+		    		this.m_E_BagImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"BottomBar/E_Bag");
      			}
-     			return this.m_E_TestButtonImage;
+     			return this.m_E_BagImage;
      		}
      	}
 
@@ -183,8 +183,8 @@ namespace ET
 			this.m_E_ExpTextTextMeshProUGUI = null;
 			this.m_E_GoldTextTextMeshProUGUI = null;
 			this.m_E_LevelTextTextMeshProUGUI = null;
-			this.m_E_TestButtonButton = null;
-			this.m_E_TestButtonImage = null;
+			this.m_E_BagButton = null;
+			this.m_E_BagImage = null;
 			this.m_E_RoleInfoButton = null;
 			this.m_E_RoleInfoImage = null;
 			this.m_E_AdventureButton = null;
@@ -196,8 +196,8 @@ namespace ET
 		private TMPro.TextMeshProUGUI m_E_ExpTextTextMeshProUGUI = null;
 		private TMPro.TextMeshProUGUI m_E_GoldTextTextMeshProUGUI = null;
 		private TMPro.TextMeshProUGUI m_E_LevelTextTextMeshProUGUI = null;
-		private UnityEngine.UI.Button m_E_TestButtonButton = null;
-		private UnityEngine.UI.Image m_E_TestButtonImage = null;
+		private UnityEngine.UI.Button m_E_BagButton = null;
+		private UnityEngine.UI.Image m_E_BagImage = null;
 		private UnityEngine.UI.Button m_E_RoleInfoButton = null;
 		private UnityEngine.UI.Image m_E_RoleInfoImage = null;
 		private UnityEngine.UI.Button m_E_AdventureButton = null;
