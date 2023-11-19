@@ -64,5 +64,10 @@ namespace ET
 		 public const ushort M2C_EndGameLevel = 10061;
 		 public const ushort C2M_UpRoleLevel = 10062;
 		 public const ushort M2C_UpRoleLevel = 10063;
+		 public const ushort ItemInfo = 10064;
+		 public const ushort M2C_AllItemsList = 10065;
+		 public const ushort M2C_ItemUpdateOpInfo = 10066;
+		 public const ushort AttributeEntryProto = 10067;
+		 public const ushort EquipInfoProto = 10068;
 	}
 }

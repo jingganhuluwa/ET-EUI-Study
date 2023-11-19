@@ -64,6 +64,16 @@ namespace ET
             //战斗胜利增加经验值
             numericComponent[NumericType.Exp] += BattleLevelConfigCategory.Instance.Get(levelId).RewardExp;
             
+            
+            //背包测试代码,随机下发闯关奖励物品
+            for (int index = 0; index < 30; index++)
+            {
+                if (!BagHelper.AddItemByConfigId(unit,RandomHelper.RandomNumber(1002,1018)))
+                {
+                    Log.Error("添加物品失败");
+                }
+            }
+            
             //numericComponent[NumericType.IronStone] += 3600;
             //numericComponent[NumericType.Fur]       += 3600;
     

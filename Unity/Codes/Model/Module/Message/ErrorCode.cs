@@ -173,5 +173,9 @@ namespace ET
         public const int ERR_ExpNumError = 200037;
         
         public const int ERR_InAdventureState = 200038;
+        
+        public const int ERR_ItemNotExist = 200039;
+        
+        public const int ERR_BagMaxLoad = 200040;
     }
 }

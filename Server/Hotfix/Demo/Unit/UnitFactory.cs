@@ -36,7 +36,8 @@ namespace ET
                         }
                     }
 
-                    UnitConfig unitConfig = UnitConfigCategory.Instance.Get(1001);
+                    unit.AddComponent<BagComponent>();
+                    //unit.AddComponent<EquipmentsComponent>();
 
                     unitComponent.Add(unit);
                     
