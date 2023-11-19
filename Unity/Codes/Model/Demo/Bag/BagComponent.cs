@@ -6,17 +6,17 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace ET
 {
     [ComponentOf]
-    [ChildType(typeof(Item))]
+    [ChildType(typeof (Item))]
 #if SERVER
     public class BagComponent : Entity,IAwake,IDestroy,IDeserialize,ITransfer,IUnitCache
 #else
-    public class BagComponent : Entity,IAwake,IDestroy
+    public class BagComponent: Entity, IAwake, IDestroy
 #endif
     {
 #if SERVER
         [BsonIgnore]
 #endif
-        public Dictionary<long, Item> ItemsDict = new Dictionary<long, Item>(); 
+        public Dictionary<long, Item> ItemsDict = new Dictionary<long, Item>();
 
 #if SERVER
         [BsonIgnore]
@@ -27,8 +27,5 @@ namespace ET
         [BsonIgnore]
         public M2C_ItemUpdateOpInfo message = new M2C_ItemUpdateOpInfo() {ContainerType = (int)ItemContainerType.Bag};
 #endif
-  
-
-       
     }
 }

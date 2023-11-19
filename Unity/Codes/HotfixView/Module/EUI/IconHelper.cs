@@ -15,17 +15,18 @@ namespace ET
         /// </summary>
         /// <OtherParam name="spriteName"></OtherParam>
         /// <returns></returns>
-        public static Sprite LoadIconSprite(string atlasName,  string spriteName)
+        public static Sprite LoadIconSprite(string atlasName, string spriteName)
         {
             try
             {
                 ResourcesComponent.Instance.LoadBundle(atlasName.StringToAB());
-                SpriteAtlas spriteAtlas = ResourcesComponent.Instance.GetAsset(atlasName.StringToAB(),atlasName) as SpriteAtlas ;
+                SpriteAtlas spriteAtlas = ResourcesComponent.Instance.GetAsset(atlasName.StringToAB(), atlasName) as SpriteAtlas;
                 Sprite sprite = spriteAtlas.GetSprite(spriteName);
-                if ( null == sprite )
+                if (null == sprite)
                 {
                     Log.Error($"sprite is null: {spriteName}");
                 }
+
                 return sprite;
             }
             catch (Exception e)
@@ -40,17 +41,18 @@ namespace ET
         /// </summary>
         /// <OtherParam name="spriteName"></OtherParam>
         /// <returns></returns>
-        public static async ETTask<Sprite> LoadIconSpriteAsync(string atlasName,  string spriteName)
+        public static async ETTask<Sprite> LoadIconSpriteAsync(string atlasName, string spriteName)
         {
             try
             {
                 await ResourcesComponent.Instance.LoadBundleAsync(atlasName.StringToAB());
-                SpriteAtlas spriteAtlas = ResourcesComponent.Instance.GetAsset(atlasName.StringToAB(),atlasName) as SpriteAtlas ;
+                SpriteAtlas spriteAtlas = ResourcesComponent.Instance.GetAsset(atlasName.StringToAB(), atlasName) as SpriteAtlas;
                 Sprite sprite = spriteAtlas.GetSprite(spriteName);
                 if (null == sprite)
                 {
                     Log.Error($"sprite is null: {spriteName}");
                 }
+
                 return sprite;
             }
             catch (Exception e)
@@ -61,4 +63,3 @@ namespace ET
         }
     }
 }
-

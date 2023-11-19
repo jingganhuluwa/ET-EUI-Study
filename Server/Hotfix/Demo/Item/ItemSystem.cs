@@ -2,9 +2,9 @@
 {
     public class ItemAwakeSystem: AwakeSystem<Item,int>
     {
-        public override void Awake(Item self,int configID)
+        public override void Awake(Item self,int configId)
         {
-            self.ConfigId = configID;
+            self.ConfigId = configId;
         }
     }
     
